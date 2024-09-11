@@ -180,7 +180,7 @@ function LoginPage() {
       });
     }
   };
-  
+
   if (user != null)
     return (
       <div className="background">

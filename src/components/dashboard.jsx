@@ -10,13 +10,15 @@ import { faBars, faClipboard, faPerson, faBook, faChartSimple, faUser, faComment
 import MyDiary from "./myDiary";
 import CommunityPage from "./community";
 import MoodTracker from "./moodtracker";
-
+import Dropdown from "./Dropdown";
 function Dashboard() {
     const [heading, setHeading] = useState("About Therapies");
     const [section, setSection] = useState("about-therapy");
 
     console.log("Loaded Dashboard");
-
+      const toggleDropdown = () => {
+        setDropdownVisible(!dropdownVisible);
+      };
     useEffect(() =>
     {
         console.log("Loaded Dashboard");
@@ -72,12 +74,9 @@ function Dashboard() {
                         <FontAwesomeIcon icon={faSearch} className="icon" />
                         <input type="text" placeholder="Search..." />
                     </div>
-                    <button className="profile-button">
-                        <div className="profile-photo"></div>
-                        <div className="profile-text">
-                            <p>Hi, Name</p>
-                        </div>
-                    </button>
+                    
+                    <Dropdown />
+                    
                 </div>
                 <div className="heading">
                     <p className="col2-head">{heading}</p>
