@@ -9,11 +9,13 @@ body, input {
   background-color: #F7F0E0;
 }
 
-body {
+.background {
+  height: 100vh;
+  position: fixed;
+  inset: 0;
   background: url('../images/background.png') no-repeat;
   background-size: cover;
-  background-attachment: fixed;
-  height: 100vh;
+ 
 }
 #image1{
   background: url('../images/img1.svg') no-repeat;

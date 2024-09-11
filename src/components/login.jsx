@@ -184,105 +184,107 @@ function LoginPage() {
 
   if (user != null)
     return (
-      <div className={`container ${isSignUp ? "sign-up-mode" : ""}`}>
-        <button className="back-btn" onClick={() => navigate("/index")}>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-            <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
-          </svg>
-        </button>
+      <div className="background">
+        <div className={`container ${isSignUp ? "sign-up-mode" : ""}`}>
+          <button className="back-btn" onClick={() => navigate("/index")}>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+              <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
+            </svg>
+          </button>
 
-        <div className="forms-container">
-          {isSignUp ? (
-            <form className="sign-up-form" onSubmit={handleEmailSignUp}>
-              <h2 className="title">Sign up</h2>
-              <div className="input-field">
-                <i className="fas fa-envelope"></i>
-                <input
-                  type="email"
-                  placeholder="Email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
-              <div className="input-field">
-                <i className="fas fa-lock"></i>
-                <input
-                  type="password"
-                  placeholder="Password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </div>
-              <input type="submit" className="btn3" value="Sign up" />
-              <p className="social-text">Or</p>
-              <div className="social-media">
-                <button
-                  type="button"
-                  className="solid btn2"
-                  onClick={handleGoogleLogin}
-                >
-                  Sign Up with Google
-                </button>
-              </div>
-            </form>
-          ) : (
-            <form className="sign-in-form" onSubmit={handleEmailLogin}>
-              <h2 className="title">Sign in</h2>
-              <div className="input-field">
-                <i className="fas fa-envelope"></i>
-                <input
-                  type="email"
-                  placeholder="Email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
-              <div className="input-field">
-                <i className="fas fa-lock"></i>
-                <input
-                  type="password"
-                  placeholder="Password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </div>
-              <input type="submit" value="Login" className="btn3" />
-              <p className="social-text">Or</p>
-              <div className="social-media">
-                <button
-                  type="button"
-                  className="solid btn2"
-                  onClick={handleGoogleLogin}
-                >
-                  Sign in with Google
-                </button>
-              </div>
-            </form>
-          )}
-        </div>
-
-        <div className="panels-container">
-          <div className="panel left-panel">
-            <div className="content">
-              <h3>Howdy, Stranger!</h3>
-              <p>Sign up for an account and start your journey now!</p>
-              <button className="btn transparent" onClick={handleSignUpClick}>
-                Sign up
-              </button>
-            </div>
-            <div className="image1"></div>
-            {/* <LoginIcon2 className="image" alt="Login Icon 2" height="48%" /> */}
+          <div className="forms-container">
+            {isSignUp ? (
+              <form className="sign-up-form" onSubmit={handleEmailSignUp}>
+                <h2 className="title">Sign up</h2>
+                <div className="input-field">
+                  <i className="fas fa-envelope"></i>
+                  <input
+                    type="email"
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </div>
+                <div className="input-field">
+                  <i className="fas fa-lock"></i>
+                  <input
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                </div>
+                <input type="submit" className="btn3" value="Sign up" />
+                <p className="social-text">Or</p>
+                <div className="social-media">
+                  <button
+                    type="button"
+                    className="solid btn2"
+                    onClick={handleGoogleLogin}
+                  >
+                    Sign Up with Google
+                  </button>
+                </div>
+              </form>
+            ) : (
+              <form className="sign-in-form" onSubmit={handleEmailLogin}>
+                <h2 className="title">Sign in</h2>
+                <div className="input-field">
+                  <i className="fas fa-envelope"></i>
+                  <input
+                    type="email"
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </div>
+                <div className="input-field">
+                  <i className="fas fa-lock"></i>
+                  <input
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                </div>
+                <input type="submit" value="Login" className="btn3" />
+                <p className="social-text">Or</p>
+                <div className="social-media">
+                  <button
+                    type="button"
+                    className="solid btn2"
+                    onClick={handleGoogleLogin}
+                  >
+                    Sign in with Google
+                  </button>
+                </div>
+              </form>
+            )}
           </div>
-          <div className="panel right-panel">
-            <div className="content">
-              <h3>Welcome Back!</h3>
-              <p>To keep connected with us please login with your info</p>
-              <button className="btn transparent" onClick={handleSignInClick}>
-                Sign in
-              </button>
+
+          <div className="panels-container">
+            <div className="panel left-panel">
+              <div className="content">
+                <h3>Howdy, Stranger!</h3>
+                <p>Sign up for an account and start your journey now!</p>
+                <button className="btn transparent" onClick={handleSignUpClick}>
+                  Sign up
+                </button>
+              </div>
+              <div className="image1"></div>
+              {/* <LoginIcon2 className="image" alt="Login Icon 2" height="48%" /> */}
             </div>
-            <div className="image2"></div>
-            {/* <LoginIcon className="image" alt="Login Icon" height="48%" /> */}
+            <div className="panel right-panel">
+              <div className="content">
+                <h3>Welcome Back!</h3>
+                <p>To keep connected with us please login with your info</p>
+                <button className="btn transparent" onClick={handleSignInClick}>
+                  Sign in
+                </button>
+              </div>
+              <div className="image2"></div>
+              {/* <LoginIcon className="image" alt="Login Icon" height="48%" /> */}
+            </div>
           </div>
         </div>
       </div>
