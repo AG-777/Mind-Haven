@@ -497,7 +497,7 @@ footer {
   
   footer li{
     list-style: none;
-    color: #303336;
+    color: #363330;
     padding: 10px 0;
     font-size: 15px;
     cursor: pointer;
@@ -505,7 +505,7 @@ footer {
   }
   
   footer li:hover {
-    color: rgb(241,240,245);
+    color: rgb(233, 134, 22);
   }
   
   footer p {

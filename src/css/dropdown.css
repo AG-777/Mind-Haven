@@ -14,7 +14,6 @@ body {
     font-family: 'Work Sans', 
     sans-serif;
     margin: 0;
-    background: var(--bg);
 }
 
 * {
@@ -39,7 +38,7 @@ header {
 }
 
 
-.profile {
+.dropdown_profile {
     display: block;
     width: 3.125rem;
     height: 3.125rem;

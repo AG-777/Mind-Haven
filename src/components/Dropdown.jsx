@@ -40,7 +40,7 @@ const DropdownMenu = () => {
     <header>
       <span className="navigation__group">
         <img
-          className="profile"
+          className="dropdown_profile"
           src={profileImg}
           alt="Natalia"
           ref={profileRef}
