@@ -17,15 +17,19 @@ body, input {
   background-size: cover;
  
 }
-#image1{
+.image1{
   background: url('../images/img1.svg') no-repeat;
   background-size: contain;
-  height: 30vh;  
+  margin-top: 20px;
+  margin-right: 10px;
+  height: 25vh;  
 }
 .image2{
   background: url('../images/img2.svg') no-repeat;
   background-size: contain;
-  height: 30vh;  
+  margin-top: 20px;
+  margin-left:60px;
+  height: 25vh;  
 }
 .container {
   width: 75%;
@@ -124,6 +128,9 @@ form.sign-in-form {
 .social-media {
   display: flex;
   justify-content: center;
+}
+.input-field input:focus{
+  color:#114a58;
 }
 .social-icon {
   height: 46px;
