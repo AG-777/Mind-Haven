@@ -10,8 +10,6 @@ import {
   onAuthStateChanged,
 } from "firebase/auth";
 import "../css/login.css";
-// import { ReactComponent as LoginIcon } from "../images/img2.svg";
-// import { ReactComponent as LoginIcon2 } from "../images/img1.svg";
 import Dashboard from "../components/dashboard";
 import { useNavigate } from "react-router-dom";
 

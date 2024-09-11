@@ -16,9 +16,7 @@ function Dashboard() {
     const [section, setSection] = useState("about-therapy");
 
     console.log("Loaded Dashboard");
-      const toggleDropdown = () => {
-        setDropdownVisible(!dropdownVisible);
-      };
+   
     useEffect(() =>
     {
         console.log("Loaded Dashboard");
@@ -41,12 +39,9 @@ function Dashboard() {
                     </button>
                     <button className="func" onClick={() => handleFunctionClick("Book an Appointment", "bookAnAppointment")}>
                         <FontAwesomeIcon icon={faClipboard} className="icon" />
-                        <p>Book an Appointment</p>
+                        <p>Consult an Therapist</p>
                     </button>
-                    <button className="func" onClick={() => handleFunctionClick("1 to 1 Talk", "oneToOneTalk")}>
-                        <FontAwesomeIcon icon={faPerson} className="icon" />
-                        <p>1 to 1 Talk</p>
-                    </button>
+                    
                     <button className="func" onClick={() => handleFunctionClick("My Diary", "myDiary")}>
                         <FontAwesomeIcon icon={faBook} className="icon" />
                         <p>My Diary</p>

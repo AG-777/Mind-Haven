@@ -12,8 +12,28 @@ import FAQIcon from "../landingpage/faq.png";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
 function LandingPage() {
-  const videoRefs = useRef([]);
+   useEffect(() => {
+     // Inject Botpress Webchat script
+     const script1 = document.createElement("script");
+     script1.src = "https://cdn.botpress.cloud/webchat/v2.1/inject.js";
+     script1.async = true;
 
+     const script2 = document.createElement("script");
+     script2.src =
+       "https://mediafiles.botpress.cloud/c1a9c8a4-1b9b-482b-8349-d1566a8d5e88/webchat/v2.1/config.js";
+     script2.async = true;
+
+     document.body.appendChild(script1);
+     document.body.appendChild(script2);
+
+     // Clean up scripts when component unmounts
+     return () => {
+       document.body.removeChild(script1);
+       document.body.removeChild(script2);
+     };
+   }, []);
+  const videoRefs = useRef([]);
+  
   const [activeQuestion, setActiveQuestion] = useState(null);
   const toggleAnswer = (index) => {
     setActiveQuestion(activeQuestion === index ? null : index);
