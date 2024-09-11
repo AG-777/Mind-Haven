@@ -1,0 +1,282 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Great+Vibes&display=swap");
+
+
+.diary {
+    height: 100%;
+    width: 95%;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.diaryIntro {
+    width: 90%;
+    height: 80vh;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.diarySec {
+    width: 90%;
+    height: 80vh;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
+.diaryIntro::before, .diarySec::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 100%;
+    top: 0;
+    background: #e5e7eb;
+    border-radius: 0 50% 50% 0;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.diaryIntro::before {
+    left: -20px;
+}
+
+.diarySec::before {
+    right: -20px;
+}
+
+.diary::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 100%;
+    background: #aaa;
+    z-index: 1;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.diary4 {
+    height: auto;
+    width: 50vh;
+    padding-top: 2rem;
+    margin-left: 3rem;
+}
+
+.diaryIntro p {
+    margin-top: 2rem;
+    font-size: 3rem;
+    margin-right: 1rem;
+    color: #f87171;
+    font-weight: 600;
+    font-family: "Great Vibes", cursive; 
+    animation: loadingText 3s infinite; 
+}
+
+@keyframes loadingText {
+    0% {
+        opacity: 0.2;
+    }
+    20% {
+        opacity: 0.4;
+    }
+    40% {
+        opacity: 0.6;
+    }
+    60% {
+        opacity: 0.8;
+    }
+    80% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.2;
+    }
+}
+
+.loginIcon {
+    width: 150px;
+    height: auto;
+    margin-top: 8rem;
+    margin-bottom: 2rem;
+}
+
+.mb-3, .floatingPassword {
+    margin-top: 1rem; 
+    width: 80%; 
+}
+
+.loginButton {
+    margin-top: 2rem; 
+    width: 30%; 
+    padding: 10px; 
+    font-size: 1.5rem;
+    font-weight: 600;
+    background: #4ade80; 
+    color: #fff;
+    border: none;
+    text-align: center;
+    display: block; 
+    border-radius: 5px; 
+}
+
+.loginButton:hover {
+    background: #16a34a; 
+    color: #fff;
+}
+
+.diaryPoem {
+    font-family: "Great Vibes", cursive; 
+    font-size: 2rem;
+    line-height: 4rem;
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    color: #4b5563;
+}
+
+.heart {
+    height: auto;
+    width: 30vh;
+} 
+
+.newEntry {
+    margin-top: 35rem;
+    margin-left: 13rem;
+    width: 200px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    color: #fff;
+    background: #fb923c;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.newEntry:hover {
+    background: #f97316;
+}
+
+.diaryContent {
+    width: 100%;
+    height: 80vh;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow-y: auto; /* Enable vertical scrolling */
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.newEntryTextarea {
+    height: calc(80vh - 40px); /* Adjust height based on padding */
+    border: none;
+    background: transparent;
+    resize: none;
+    font-family: cursive; /* Monospace font for a typewriter effect */
+    font-size: 20px;
+    line-height: 1.5;
+    color: #333;
+    padding: 10px;
+    outline: none; /* Remove outline when focused */
+}
+
+.newEntryTextarea::placeholder {
+    color: #aaa; /* Placeholder color */
+}
+
+.buttonContainer {
+    display: flex;
+    gap: 10px; /* Adjust the gap between buttons as needed */
+    margin-top: 20px; /* Add some margin on top */
+}
+
+.uploadButton {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    color: #fff;
+    background: #fdba74;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    width: 15%;
+    height: auto;
+}
+
+.uploadButton:hover {
+    background: #fcd34d;
+}
+
+.saveButton {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    color: #fff;
+    background: #34d399; /* Use a distinct color for the save button */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    width: 150px; /* Set a fixed width for consistent button size */
+}
+
+.saveButton:hover {
+    background: #10b981;
+}
+
+.imagePreviewContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.imageWrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.uploadedImage {
+    width: 150px;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.removeImageButton {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    font-size: 18px;
+    line-height: 25px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.removeImageButton:hover {
+    background: rgba(0, 0, 0, 0.7);
+}

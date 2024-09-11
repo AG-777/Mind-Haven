@@ -1,0 +1,140 @@
+.diary-heading {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #c2410c;
+    text-align: center;
+    margin: 50px 0;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.wrapper1 {
+    width: 500px;
+    background: #a7f3d0;
+    border-radius: 10px;
+    position: absolute;
+    right: 20px;
+    top: 10rem;
+    margin-right: 5rem;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Added shadow for better depth */
+}
+
+.wrapper1 header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 25px;
+    padding-top: 20px;
+}
+
+header .curr-date {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-left: 2rem;
+    font-family: cursive;
+    color: #333;
+}
+
+header .icons span {
+    height: 30px;
+    width: 30px;
+    background: #f2f2f2;
+    text-align: center;
+    margin: 0 1px;
+    cursor: pointer;
+    line-height: 30px;
+    color: #878787;
+    font-size: 1.5rem;
+    border-radius: 50%;
+    font-family: 'Material Icons Round';
+    transition: background 0.3s ease; /* Smooth transition for hover effect */
+}
+
+header .icons span:hover {
+    background: #ddd;
+}
+
+header .icons span:last-child {
+    margin-right: -10px;
+}
+
+.calendar {
+    padding: 0 20px;
+    height: 350px;
+}
+
+.calendar ul {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+.calendar ul li {
+    width: calc(100% / 7); /* Ensure each day takes up an equal portion of the week */
+    position: relative;
+    padding: 15px 0;
+    box-sizing: border-box;
+}
+
+.calendar .weeks li {
+    font-weight: 500;
+    font-size: 1.2rem;
+    padding: 10px 0;
+}
+
+.calendar .days {
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.calendar .days li {
+    z-index: 1;
+    cursor: pointer;
+    margin: 0;
+    font-size: 1.2rem;
+    color: #333;
+    position: relative;
+    width: calc(100% / 7); /* Ensure the day takes up the correct width within the grid */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 0;
+    box-sizing: border-box; /* Ensure padding is included in the width calculation */
+}
+
+.calendar .days li::before {
+    position: absolute;
+    content: "";
+    height: 40px;
+    width: 40px;
+    top: 50%;
+    background: #f2f2f2;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.days li:hover::before {
+    background: #ddd;
+}
+
+.days li.inactive {
+    color: #aaa;
+}
+
+.days li.active {
+    color: #fff;
+    background: #60a5fa; /* Added background color for active date */
+    border-radius: 50%; /* Make active date circular */
+    padding: 10px; /* Center the active date */
+}
+
+.days li.active::before {
+    background: none; /* Remove the background circle for active date */
+}
+
