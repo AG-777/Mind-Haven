@@ -117,7 +117,7 @@ const handleClick = () => {
           <p className="col2-head">{heading}</p>
           {section !== "bookAnAppointment" && (
             <p className="col2-subtitle">
-              Hi Name, Welcome to MindHaven {heading}
+              Hi, Welcome to MindHaven {heading}
             </p>
           )}
 

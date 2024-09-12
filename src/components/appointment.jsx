@@ -53,7 +53,7 @@ const MindHaven = () => {
         </div>
 
         <div className="featured-images">
-          {[...Array(6)].map((_, i) => (
+          {[...Array(6  )].map((_, i) => (
             <div key={i}>
               <img
                 src={download_svg}

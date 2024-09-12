@@ -91,7 +91,7 @@ function LandingPage() {
           width="100px"
           src={ArrowIcon}
           alt="Arrow Icon"
-          className="arrow"
+          className="arrow-index"
         />
       </div>
       <div className="healsteps">

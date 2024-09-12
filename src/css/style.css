@@ -140,13 +140,12 @@
     background-color: #fcd34d;
   }
   
-  .arrow {
+  .arrow-index {
     animation: bounce 2s infinite;
     bottom: 10%;
     left: 52%;
     transform: translateX(-50%);
     margin-top: 10rem;
-    margin-left:100px;
   }
   .navBtn{
     border: none;
