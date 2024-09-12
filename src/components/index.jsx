@@ -12,33 +12,40 @@ import FAQIcon from "../landingpage/faq.png";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
 function LandingPage() {
-   useEffect(() => {
-     // Inject Botpress Webchat script
-     const script1 = document.createElement("script");
-     script1.src = "https://cdn.botpress.cloud/webchat/v2.1/inject.js";
-     script1.async = true;
+  useEffect(() => {
+    // Inject Botpress Webchat script
+    const script1 = document.createElement("script");
+    script1.src = "https://cdn.botpress.cloud/webchat/v2.1/inject.js";
+    script1.async = true;
 
-     const script2 = document.createElement("script");
-     script2.src =
-       "https://mediafiles.botpress.cloud/c1a9c8a4-1b9b-482b-8349-d1566a8d5e88/webchat/v2.1/config.js";
-     script2.async = true;
+    const script2 = document.createElement("script");
+    script2.src =
+      "https://mediafiles.botpress.cloud/c1a9c8a4-1b9b-482b-8349-d1566a8d5e88/webchat/v2.1/config.js";
+    script2.async = true;
 
-     document.body.appendChild(script1);
-     document.body.appendChild(script2);
+    document.body.appendChild(script1);
+    document.body.appendChild(script2);
 
-     // Clean up scripts when component unmounts
-     return () => {
-       document.body.removeChild(script1);
-       document.body.removeChild(script2);
-     };
-   }, []);
+    // Clean up scripts when component unmounts
+    return () => {
+      document.body.removeChild(script1);
+      document.body.removeChild(script2);
+    };
+  }, []);
   const videoRefs = useRef([]);
-  
+  const faqRef = useRef(null); // Ref for FAQ section
+  const reviewRef = useRef(null);
   const [activeQuestion, setActiveQuestion] = useState(null);
   const toggleAnswer = (index) => {
     setActiveQuestion(activeQuestion === index ? null : index);
   };
-
+  // Scroll to FAQ section
+  const scrollToFAQ = () => {
+    faqRef.current.scrollIntoView({ behavior: "smooth" });
+  };
+  const scrollToREV = () => {
+    reviewRef.current.scrollIntoView({ behavior: "smooth" });
+  };
   return (
     <div className="landing-page landing">
       <div className="frontpage">
@@ -48,12 +55,12 @@ function LandingPage() {
             <Link to="/about" className="navComp">
               About
             </Link>
-            <Link to="/faq" className="navComp">
+            <button className="navComp navBtn" onClick={scrollToFAQ}>
               FAQ
-            </Link>
-            <Link to="/reviews" className="navComp">
+            </button>
+            <button className="navComp navBtn" onClick={scrollToREV}>
               Reviews
-            </Link>
+            </button>
             <Link to="/contact" className="navComp">
               Contact
             </Link>
@@ -148,7 +155,7 @@ function LandingPage() {
         </div>
       </div>
 
-      <div className="reviews">
+      <div className="reviews" ref={reviewRef}>
         <div className="review-content">
           <h3>We have helped many feel better</h3>
           <p>Now it's your turn to get benefit from MindHaven Community</p>
@@ -189,7 +196,7 @@ function LandingPage() {
         </div>
       </div>
 
-      <div className="faq">
+      <div className="faq" ref={faqRef}>
         <div className="faq-pic">
           <img src={FAQIcon} alt="" className="faqicon bounce" />
         </div>

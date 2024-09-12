@@ -1,0 +1,239 @@
+* {
+  scroll-behavior: smooth;
+}
+
+.body-ap {
+  margin: 0;
+  font-family: "Quicksand", sans-serif;
+  width: 100%;
+  margin-top:2px;
+}
+
+.header-ap {
+  position: sticky;
+  background-color: #fff;
+  top: 0;
+  z-index: 100;
+  padding: 5px;
+}
+
+.nav-ap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  margin-left:300px;
+}
+
+.a-ap {
+  text-decoration: none;
+  list-style: none;
+}
+
+.header-brand > .a-ap {
+  margin-right: 42rem;
+  color: #16a34a;
+  font-size: 34px;
+}
+
+.nav-link {
+  margin-right: 2rem;
+  font-size: 20px;
+}
+.nav-link>.a-ap{
+  color:rgb(66, 10, 66);
+  font-weight:300;
+}
+.divider-ap {
+  margin: 0 8rem;
+  height: 0.15rem;
+  border: none;
+  background-color: rgb(65, 58, 58);
+  border-radius: 8rem;
+}
+
+.hero-section {
+  height: 80vh;
+  width: 100%;
+  margin-top:5vh;
+ 
+  padding-right:2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-content {
+  margin: 0rem 8rem;
+  height: 90%;
+  width: 79.2rem;
+   padding-right: 2rem;
+  padding-bottom: 5%;
+  background-color: #bba5de;
+  border-radius: 1rem;
+  display: flex;
+}
+.hero-image{
+  margin-top: 50px;
+}
+.text-content-ap {
+  color: white;
+  font-size: 3rem;
+  margin-left: 7rem;
+  margin-top: 10rem;
+  width: 50%;
+  font-weight: 1000;
+}
+
+.sub-heading {
+  font-size: 0.9rem;
+  font-weight: 100;
+}
+
+.btn-appointment {
+  padding: 1rem;
+  border-radius: 4rem;
+  border: none;
+  color: rgb(103, 103, 103);
+  background-color: white;
+  font-size: 0.9rem;
+}
+
+.hero-image {
+  background-image: url("../assets/appoint.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100%;
+  width: 55%;
+}
+
+.featured-content {
+  margin-top: 5rem;
+  text-align: center;
+}
+
+.heading-large {
+  font-size: 2rem;
+  font-weight: 900;
+}
+
+.sub-description {
+  position: relative;
+  bottom: 1rem;
+  font-size: 14px;
+}
+
+.featured-images {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap:30px;
+}
+
+.featured-icon {
+  width: 6rem;
+  height: auto;
+}
+
+.therapist-category {
+  font-size: 0.8rem;
+}
+.therapists-header{
+  text-align: center;
+}
+
+.therapists-header> .heading-large{
+  font-weight: 900;
+}
+
+.therapists-section {
+  margin-top: 15rem;
+}
+
+.therapists-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap:60px;
+  align-items:center;
+  padding: 0 12rem;
+  overflow: hidden;
+  margin-bottom: 5rem;
+}
+.therapists-list:nth-last-child(1){
+  justify-content:center;
+}
+.therapist-card {
+  display: flex;
+  border: 1px solid rgba(2, 4, 5, 0.116);
+  border-radius: 1rem;
+  height: 15rem;
+  width: 31rem;
+  padding: 1rem;
+  margin-right: 4rem;
+}
+
+.therapist-image {
+  background-image: url("../assets/therapist.png");
+  background-size: contain;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  width: 8rem;
+  border:1px solid rgba(128, 128, 128, 0.24);
+  border-radius: 1rem;
+}
+
+.therapist-details {
+  margin-left: 2rem;
+}
+
+.therapist-name {
+  color: #6c6661;
+  font-weight: 900;
+  font-size: 1.4rem;
+}
+
+.therapist-info {
+  color: #6c6661;
+  font-size: 0.9rem;
+}
+
+.highlight {
+  color: #16a34a;
+}
+
+.btn-book {
+  border: none;
+  border-radius: 1.2rem;
+  padding: 0.5rem 1.7rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: white;
+  background: linear-gradient(#85e1a7, #53df58);
+}
+.end-section{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+.end-div {
+  margin: 0rem 8rem;
+  height: 30rem;
+  width: 55%;
+  background-color: #bba5de;
+  border-radius: 1rem;
+  display: flex;
+}
+
+.content-box {
+  color: white;
+  font-size: 3rem;
+  margin-left: 7rem;
+  margin-top: 10rem;
+}
+
+.end-image {
+  background-image: url('your-image-path');
+}

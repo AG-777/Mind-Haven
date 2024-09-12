@@ -5,6 +5,7 @@ import LandingPage from '../src/components/index';
 import LoginPage from '../src/components/login';
 import Dashboard from '../src/components/dashboard';
 import Dropdown from '../src/components/Dropdown';
+import Appointment from '../src/components/appointment';
 function App() {
 
   return (
@@ -13,6 +14,7 @@ function App() {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/Dropdown" element={<Dropdown />} />
+      <Route path="/appointment" element={<Appointment />} />
     </Routes>
   );
 }

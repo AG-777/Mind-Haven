@@ -112,7 +112,7 @@
   }
   
   .front-subheading {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-family: 'Playfair Display', serif;
     color: #27272a;
     margin-bottom: 20px;
@@ -123,7 +123,6 @@
     display: flex;
     justify-content: center;
     margin-top: 20px;
-    margin-left: 4rem;
   }
   
   .about-us-btn {
@@ -147,9 +146,12 @@
     left: 52%;
     transform: translateX(-50%);
     margin-top: 10rem;
-    margin-left: 10rem;
+    margin-left:100px;
   }
-  
+  .navBtn{
+    border: none;
+    background-color: transparent;
+  }
   @keyframes bounce {
     0%, 100% {
       transform: translateY(0);

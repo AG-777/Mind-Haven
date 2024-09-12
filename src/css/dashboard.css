@@ -107,6 +107,7 @@
   
   .dashboard .search-bar input {
     border: none;
+    background-color: #fff;
     outline: none;
     padding: 10px;
     font-size: 16px;

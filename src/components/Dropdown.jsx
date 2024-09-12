@@ -4,7 +4,7 @@ import messageIcon from "../assets/message.svg";
 import notificationIcon from "../assets/notification.svg";
 import profileImg from "../assets/natalia.jpg";
 import melissaImg from "../assets/melissa.jpg";
-console.log(1)
+
 const DropdownMenu = () => {
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const dropdownRef = useRef(null);
