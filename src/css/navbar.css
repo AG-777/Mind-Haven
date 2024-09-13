@@ -8,16 +8,21 @@
   font-size: 1.2rem;
   background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent background */
   color: black;
+
   z-index: 1000;
 }
 
 .logo {
-  font-size: 1.5rem;
+  font-size: 2.0rem;
   color: #22c55e;
   font-weight: bold;
   margin-left: 2rem;
 }
-
+.anchor-logo{
+  text-decoration: none;
+  color:#22c55e;
+  cursor: pointer;
+}
 .nav {
   display: flex;
   align-items: center;
@@ -30,34 +35,65 @@
   letter-spacing: 0.1rem;
   margin-right: 1.2rem;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.2rem;
 }
 
 .navComp:hover {
   opacity: 0.8;
 }
 
-.a, .b {
+.login-index-btn, .get-started {
   border-radius: 100px;
   padding: 6px 12px;
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   cursor: pointer;
   margin-right: 1.2rem;
 }
 
-.a {
+.login-index-btn {
   background-color: rgba(157, 212, 227, 1);
   border: none;
   color: white;
 }
 
-.b {
+.get-started {
+  position: relative;
   background-color: white;
-  border: solid 1px rgba(157, 212, 227, 1);
-  color: rgba(157, 212, 227, 1);
+  border: solid 2px #22c55e;
+  color: #22c55e;
+  font-size: 1rem;
+  font-weight: 600;
+  overflow: hidden; /* Ensures the pseudo-element doesn't overflow the button */
+  transition: color 0.3s ease;
 }
 
-.b:hover, .a:hover {
+.get-started::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background-color: #22c55e;
+  transition: height 0.3s ease;
+  z-index: 0; /* Place the pseudo-element behind the button text */
+}
+
+.get-started:hover::after {
+  height: 100%;
+}
+
+.get-started:hover {
+  color: white; /* Change text color on hover to contrast with the background */
+}
+
+.get-started span {
+  position: relative;
+  z-index: 1; /* Ensure text is above the pseudo-element */
+}
+
+
+.get-started:hover, .login-index-btn:hover {
   opacity: 0.9;
 }
 

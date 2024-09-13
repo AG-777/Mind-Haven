@@ -43,20 +43,7 @@ body, input {
   border-radius: 2.5rem;
   background-color: #2a2a2a34;
 }
-.back-btn {
-  background-color: rgba(60, 60, 60, 0.338);
-  color: #fff;
-  border-radius: 10px;
-  padding: 12px;
-  height: 45px;
-  width: 45px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  top: 15px;
-  left: 15px;
-}
+
 .forms-container {
   position: absolute;
   top: 15%;

@@ -1,7 +1,7 @@
 import React,{useRef} from "react";
 import "../css/appointment.css";
 import download_svg from "../assets/download.svg";
-
+import Navbar from './navbar2';
 const MindHaven = () => {
   const home_ap = useRef(null);
   const scrollTo_home_ap = () =>{
@@ -18,31 +18,7 @@ const MindHaven = () => {
   }
   return (
     <div className="body-ap">
-      <header className="header-ap">
-        <nav className="nav-ap">
-          <div className="header-brand">
-            <a className="a-ap" href="">
-              MindHaven.
-            </a>
-          </div>
-          <div className="nav-link">
-            <a className="a-ap" onClick={scrollTo_home_ap}>
-              HOME
-            </a>
-          </div>
-          <div className="nav-link">
-            <a className="a-ap" onClick={scrollTotherapist_ap}>
-              TOP THERAPIST
-            </a>
-          </div>
-          <div className="nav-link">
-            <a className="a-ap" href="">
-              ALL DOCTORS
-            </a>
-          </div>
-        </nav>
-      </header>
-      <hr className="divider-ap" />
+      <Navbar customStyles={{ backgroundColor: "rgba(34, 31, 31, 0.104)" }} />
       <section className="hero-section" ref={home_ap}>
         <div className="hero-content">
           <div className="text-content-ap">

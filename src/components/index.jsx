@@ -40,18 +40,32 @@ function LandingPage() {
   const toggleAnswer = (index) => {
     setActiveQuestion(activeQuestion === index ? null : index);
   };
-
   const scrollToFAQ = () => {
-    faqRef.current.scrollIntoView({ behavior: "smooth" });
+    if (faqRef.current) {
+      window.scrollTo({
+        top: faqRef.current.offsetTop - 50, // Offset the scroll position by 50px
+        behavior: "smooth", // Smooth scroll
+      });
+    }
   };
 
-  const scrollToREV = () => {
-    reviewRef.current.scrollIntoView({ behavior: "smooth" });
-  };
+ const scrollToREV = () => {
+   if (reviewRef.current) {
+     window.scrollTo({
+       top: reviewRef.current.offsetTop - 100, // Offset the scroll position by 50px
+       behavior: "smooth", // Smooth scroll
+     });
+   }
+ };
+
 
   return (
     <div className="landing-page landing">
-      <Navbar scrollToFAQ={scrollToFAQ} scrollToREV={scrollToREV} />
+      <Navbar
+        scrollToFAQ={scrollToFAQ}
+        scrollToREV={scrollToREV}
+        customStyles={{ backgroundColor: "rgba(255, 255, 255, 0.8)" }}
+      />
 
       <div className="frontpage">
         <div className="front-page">

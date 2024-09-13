@@ -1,0 +1,15 @@
+.back-btn {
+  background-color: rgba(105, 104, 104, 0.214);
+  color: #fff;
+  border-radius: 10px;
+  padding: 12px;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  border:none;
+}

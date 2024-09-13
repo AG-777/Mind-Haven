@@ -1,9 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../css/navbar.css";
-function Navbar({ scrollToFAQ, scrollToREV , customStyles = {} }) {
+import BackButton from "./back_btn";
+
+function Navbar({ scrollToFAQ, scrollToREV, customStyles = {} }) {
   return (
     <div className="navbar-main" style={customStyles}>
+      <BackButton target={"/dashboard"} />
       <div className="logo">
         <a href="../" className="anchor-logo">
           MindHaven.
@@ -11,24 +14,17 @@ function Navbar({ scrollToFAQ, scrollToREV , customStyles = {} }) {
       </div>
       <div className="nav">
         <Link to="/about" className="navComp">
+          Home
+        </Link>
+        <Link to="/about" className="navComp">
           About
         </Link>
         <button className="navComp navBtn" onClick={scrollToFAQ}>
-          FAQ
+          Therapists
         </button>
-        <button className="navComp navBtn" onClick={scrollToREV}>
-          Reviews
-        </button>
+
         <Link to="/contact" className="navComp">
           Contact
-        </Link>
-        {/* <Link to="/login">
-          <button className="login-index-btn">Login</button>
-        </Link> */}
-        <Link to="./login">
-          <button className="get-started">
-            <span>Get Started</span>
-          </button>
         </Link>
       </div>
     </div>
