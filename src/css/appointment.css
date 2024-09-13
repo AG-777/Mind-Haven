@@ -1,12 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
 * {
   scroll-behavior: smooth;
 }
-
+body::-webkit-scrollbar {
+  display: none;
+}
 .body-ap {
   margin: 0;
   font-family: "Quicksand", sans-serif;
   width: 100%;
-  margin-top:2px;
 }
 
 .header-ap {
@@ -15,13 +18,13 @@
   top: 0;
   z-index: 100;
   padding: 5px;
+  height: 50px;
 }
 
 .nav-ap {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 40px;
   margin-left:300px;
 }
 
@@ -42,7 +45,7 @@
 }
 .nav-link>.a-ap{
   color:rgb(66, 10, 66);
-  font-weight:300;
+  font-weight:400;
 }
 .divider-ap {
   margin: 0 8rem;
@@ -157,7 +160,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap:60px;
+  gap:50px;
   align-items:center;
   padding: 0 12rem;
   overflow: hidden;
@@ -221,20 +224,31 @@
 }
 .end-div {
   margin: 0rem 8rem;
-  height: 30rem;
-  width: 55%;
+  height: 40rem;
+  width: 70%;
   background-color: #bba5de;
   border-radius: 1rem;
   display: flex;
+  background: url('../assets/appointment1.jpeg') no-repeat center;
+  background-size:cover;
+  justify-content: center;
 }
 
-.content-box {
+.content-box-div {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top:15vh;
   color: white;
+  text-align: center;
   font-size: 3rem;
-  margin-left: 7rem;
-  margin-top: 10rem;
+  font-weight: 500;
+  background-color: rgba(0, 0, 0, 0.356);
+  width: 100%;
+  border-radius: 15px;
+
 }
 
-.end-image {
-  background-image: url('your-image-path');
+.content-box{
+  width: 50%;
 }

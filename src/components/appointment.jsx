@@ -1,7 +1,21 @@
-import React from "react";
+import React,{useRef} from "react";
 import "../css/appointment.css";
 import download_svg from "../assets/download.svg";
+
 const MindHaven = () => {
+  const home_ap = useRef(null);
+  const scrollTo_home_ap = () =>{
+    if (home_ap.current) {
+      home_ap.current.scrollIntoView({ behavior: "smooth", block: "start" });
+
+      window.scrollTo({ top: -10, left: 0, behavior: "smooth" });
+    }
+  }
+  const therapist_ap = useRef(null);
+  const scrollTotherapist_ap = () =>{
+    therapist_ap.current.scrollIntoView({ behavior: "smooth" });
+   
+  }
   return (
     <div className="body-ap">
       <header className="header-ap">
@@ -12,13 +26,13 @@ const MindHaven = () => {
             </a>
           </div>
           <div className="nav-link">
-            <a className="a-ap" href="#home">
+            <a className="a-ap" onClick={scrollTo_home_ap}>
               HOME
             </a>
           </div>
           <div className="nav-link">
-            <a className="a-ap" href="">
-              ABOUT
+            <a className="a-ap" onClick={scrollTotherapist_ap}>
+              TOP THERAPIST
             </a>
           </div>
           <div className="nav-link">
@@ -28,10 +42,8 @@ const MindHaven = () => {
           </div>
         </nav>
       </header>
-
       <hr className="divider-ap" />
-
-      <section className="hero-section">
+      <section className="hero-section" ref={home_ap}>
         <div className="hero-content">
           <div className="text-content-ap">
             Ready to Find Your Perfect Therapist?
@@ -53,7 +65,7 @@ const MindHaven = () => {
         </div>
 
         <div className="featured-images">
-          {[...Array(6  )].map((_, i) => (
+          {[...Array(6)].map((_, i) => (
             <div key={i}>
               <img
                 src={download_svg}
@@ -66,7 +78,7 @@ const MindHaven = () => {
         </div>
       </section>
 
-      <section className="therapists-section">
+      <section className="therapists-section" ref={therapist_ap}>
         <div className="therapists-header">
           <p className="heading-large">Top Therapists Ready for You</p>
           <p>
@@ -75,7 +87,7 @@ const MindHaven = () => {
           </p>
         </div>
 
-        <div className="therapists-list">
+        <div className="therapists-list" ref={therapist_ap}>
           {[...Array(8)].map((_, i) => (
             <div className="therapist-card" key={i}>
               <div className="therapist-image"></div>
@@ -100,10 +112,11 @@ const MindHaven = () => {
       </section>
       <div className="end-section">
         <div className="end-div">
-          <div className="content-box">
-            Join 100+ Experts and Find Your Perfect Match!
+          <div className="content-box-div">
+            <div className="content-box">
+              Join 100+ Experts and Find Your Perfect Match!
+            </div>
           </div>
-          <div className="end-image"></div>
         </div>
       </div>
     </div>
