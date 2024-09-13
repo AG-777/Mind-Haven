@@ -19,7 +19,7 @@ function Navbar({ scrollToFAQ, scrollToREV , customStyles = {} }) {
         <button className="navComp navBtn" onClick={scrollToREV}>
           Reviews
         </button>
-        <Link to="/contact" className="navComp">
+        <Link to="/contact_us" target="_blank" className="navComp">
           Contact
         </Link>
         {/* <Link to="/login">
