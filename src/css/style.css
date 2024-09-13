@@ -6,6 +6,7 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
+   
   }
   
   .frontpage {
@@ -18,73 +19,10 @@
     align-items: center;
     /* position: fixed;
     top: 0; */
-    z-index: 10;
+ 
     /* justify-content: center; */
   }
   
-  .navbar {
-    /* position: fixed; Ensure navbar stays at the top */
-    /* top: 0; */
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: 20px 40px;
-    font-size: 1.2rem;
-    background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent background */
-    color: black;
-    /* z-index: 1000; */
-    /* margin-top: -64rem; */
-  }
-  
-  .logo {
-    font-size: 1.5rem;
-    color: #22c55e;
-    font-weight: bold;
-    margin-left: 2rem;
-  }
-  
-  .nav {
-    display: flex;
-    align-items: center;
-  }
-  
-  .navComp {
-    text-decoration: none;
-    color: black;
-    font-weight: 500;
-    letter-spacing: 0.1rem;
-    margin-right: 1.2rem;
-    cursor: pointer;
-    font-size: 1rem;
-  }
-  
-  .navComp:hover {
-    opacity: 0.8;
-  }
-  
-  .a, .b {
-    border-radius: 100px;
-    padding: 6px 12px;
-    font-size: 0.9rem;
-    cursor: pointer;
-    margin-right: 1.2rem;
-  }
-  
-  .a {
-    background-color: rgba(157, 212, 227, 1);
-    border: none;
-    color: white;
-  }
-  
-  .b {
-    background-color: white;
-    border: solid 1px rgba(157, 212, 227, 1);
-    color: rgba(157, 212, 227, 1);
-  }
-  
-  .b:hover, .a:hover {
-    opacity: 0.9;
-  }
   
   /* Fixed front-page content during scroll */
   .front-page {
@@ -100,7 +38,7 @@
     /* top: 50%; Adjust to ensure it's centered vertically */
     /* left: 50%; */
     /* transform: translate(-50%, -50%); */
-    z-index: 10;
+
   }
   
   .front-heading {
@@ -147,10 +85,7 @@
     transform: translateX(-50%);
     margin-top: 10rem;
   }
-  .navBtn{
-    border: none;
-    background-color: transparent;
-  }
+
   @keyframes bounce {
     0%, 100% {
       transform: translateY(0);

@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
+import Navbar from "./navbar"; // Importing Navbar component
 import ArrowIcon from "../landingpage/arrow.svg";
 import "../css/style.css";
 import Video1 from "../landingpage/video1.mp4";
@@ -13,7 +14,6 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 
 function LandingPage() {
   useEffect(() => {
-    // Inject Botpress Webchat script
     const script1 = document.createElement("script");
     script1.src = "https://cdn.botpress.cloud/webchat/v2.1/inject.js";
     script1.async = true;
@@ -26,55 +26,37 @@ function LandingPage() {
     document.body.appendChild(script1);
     document.body.appendChild(script2);
 
-    // Clean up scripts when component unmounts
     return () => {
       document.body.removeChild(script1);
       document.body.removeChild(script2);
     };
   }, []);
+
   const videoRefs = useRef([]);
-  const faqRef = useRef(null); // Ref for FAQ section
+  const faqRef = useRef(null);
   const reviewRef = useRef(null);
   const [activeQuestion, setActiveQuestion] = useState(null);
+
   const toggleAnswer = (index) => {
     setActiveQuestion(activeQuestion === index ? null : index);
   };
-  // Scroll to FAQ section
+
   const scrollToFAQ = () => {
     faqRef.current.scrollIntoView({ behavior: "smooth" });
   };
+
   const scrollToREV = () => {
     reviewRef.current.scrollIntoView({ behavior: "smooth" });
   };
+
   return (
     <div className="landing-page landing">
+      <Navbar scrollToFAQ={scrollToFAQ} scrollToREV={scrollToREV} />
+
       <div className="frontpage">
-        <div className="navbar">
-          <div className="logo">MindHaven.</div>
-          <div className="nav">
-            <Link to="/about" className="navComp">
-              About
-            </Link>
-            <button className="navComp navBtn" onClick={scrollToFAQ}>
-              FAQ
-            </button>
-            <button className="navComp navBtn" onClick={scrollToREV}>
-              Reviews
-            </button>
-            <Link to="/contact" className="navComp">
-              Contact
-            </Link>
-            <Link to="/login">
-              <button className="b">Login</button>
-            </Link>
-            <Link to="/login">
-              <button className="a">Get Started</button>
-            </Link>
-          </div>
-        </div>
         <div className="front-page">
-          <h3 className={`front-heading`}>You deserve to be Happy</h3>
-          <p className={`front-subheading`}>
+          <h3 className="front-heading">You deserve to be Happy</h3>
+          <p className="front-subheading">
             " You deserve to be happy, and we're here to help you find your way.
             Discover a space dedicated to your well-being, where you can express
             yourself and grow. Join a community that supports your journey to
@@ -82,7 +64,7 @@ function LandingPage() {
           </p>
           <div className="about-us-btn-container">
             <Link to="/about">
-              <button className={`about-us-btn`}>About Us</button>
+              <button className="about-us-btn">About Us</button>
             </Link>
           </div>
         </div>
