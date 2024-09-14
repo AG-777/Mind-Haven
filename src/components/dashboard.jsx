@@ -42,6 +42,9 @@ function Dashboard() {
 const handleClick = () => {
   navigate("/appointment"); // This will navigate to the About component
 };
+const CommunityHandle = () =>{
+  navigate("/community");
+}
   return (
     <div className="dashboard">
       {section !== "bookAnAppointment" && (
@@ -83,7 +86,7 @@ const handleClick = () => {
             </button>
             <button
               className="func"
-              onClick={() => handleFunctionClick("Community", "community")}
+              onClick={CommunityHandle}
             >
               <FontAwesomeIcon icon={faUser} className="icon" />
               <p>Community</p>

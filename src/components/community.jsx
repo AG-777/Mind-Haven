@@ -1,332 +1,248 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "../css/community.css";
-import CommVideo from '../assets/community.mp4';
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-// import { ReactComponent as SupportIcon } from '../assets/support.svg';
-// import { ReactComponent as ShareIcon } from '../assets/share.svg';
-// import { ReactComponent as HealIcon } from '../assets/heal.svg';
-// import { ReactComponent as InspireIcon } from '../assets/inspire.svg';
-// import { ReactComponent as ConnectIcon } from '../assets/connect.svg';
-// import { ReactComponent as CommunityIcon } from '../assets/commSec.svg';
-// import { ReactComponent as ProbIcon } from '../assets/submitProb.svg';
-import Person1 from "../community/boy.png";
-import Person2 from "../community/man1.png";
-import Person3 from "../community/pro1.webp";
-import Person4 from "../community/pro2.webp";
-import Person5 from "../community/man.png";
-import Person6 from "../community/user.png";
-import Person7 from "../community/woman.png";
-import Person8 from "../community/woman1.png";
-import Person9 from "../community/pro3.webp";
-import Person10 from "../community/pro4.webp";
+import BellIcon from "../assets/bell.png";
+import SettingIcon from "../assets/setting.png";
+import ShareIcon from "../assets/share.png";
+import ProfileIcon from "../assets/profile.png";
+import SearchIcon from "../assets/search.png";
+import SupportIcon from "../assets/support.png";
+import DepressionIcon from "../assets/fear.png";
+import AnxietyIcon from "../assets/anxiety.png";
+import PrideIcon from "../assets/love.png";
+import CareIcon from "../assets/old.png";
+import InsomniaIcon from "../assets/insomnia.png";
+import Share1Icon from "../assets/share1.png";
+import PlantIcon from "../assets/plant.png";
+const categoryIcons = {
+  "Addiction Support": SupportIcon,
+  "Living with Depression": DepressionIcon,
+  "Coping with Anxiety": AnxietyIcon,
+  "Having Insomnia": InsomniaIcon,
+  "Together with Pride": PrideIcon,
+  "Life as Caregiver": CareIcon,
+};
 
+const dummyChats = {
+  "Addiction Support": [
+    {
+      id: 1,
+      user: "Anonymous",
+      message: "I need help with addiction.",
+      replies: [],
+    },
+    {
+      id: 2,
+      user: "Anonymous",
+      message: "Can anyone share their experience?",
+      replies: [],
+    },
+  ],
+  "Living with Depression": [
+    {
+      id: 3,
+      user: "Anonymous",
+      message: "Feeling really down lately.",
+      replies: [],
+    },
+    {
+      id: 4,
+      user: "Anonymous",
+      message: "What helps you feel better?",
+      replies: [],
+    },
+  ],
+  // Add more chat entries for other categories
+};
 
 function CommunityPage() {
-    const [section, setSection] = useState("CommIntro");
-    const [poemVisible, setPoemVisible] = useState(false);
-    const [isFormVisible, setIsFormVisible] = useState(false);
-    const [isSecFormVisible, setIsSecFormVisible] = useState(false); 
-    const [name, setName] = useState("");
-    const [problem, setProblem] = useState("");
-    const [solution, setSolution] = useState(""); 
-    const [currentProblem, setCurrentProblem] = useState(""); 
-    const [isSaved, setIsSaved] = useState(false); 
-    const [submittedProblems, setSubmittedProblems] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [isChatsVisible, setChatsVisible] = useState(false);
+  const [replyData, setReplyData] = useState({
+    show: false,
+    message: "",
+    chatId: null,
+  });
+  const [newMessage, setNewMessage] = useState("");
+  const [sendAnonymously, setSendAnonymously] = useState(false);
+  const [sensitiveContentVisible, setSensitiveContentVisible] = useState(false);
 
-    const handleOpenForm = () => {
-        setIsFormVisible(true);
-    };
+  const handleCategoryClick = (category) => {
+    setSelectedCategory(category);
+    setChatsVisible(false); // Hide chats when selecting a new category
+    setSensitiveContentVisible(false); // Reset sensitive content visibility
+  };
 
-    const handleOpenSecForm = (problem) => {
-        setCurrentProblem(problem);
-        setIsSecFormVisible(true);
-    };
+//   const toggleChatsVisibility = () => {
+//     setChatsVisible(!isChatsVisible);
+//   };
 
-    const handleSave = () => {
-        if (name && problem) {
-            const newProblem = { name: name, problem: problem };
-            const updatedProblems = [...submittedProblems, newProblem];
-            setSubmittedProblems(updatedProblems);
-            localStorage.setItem("submittedProblems", JSON.stringify(updatedProblems));
-            setIsSaved(true);
-            setTimeout(() => {
-                setIsSaved(false);
-                setName("");
-                setProblem("");
-                setIsFormVisible(false);
-            }, 3000);
-        } else {
-            alert("Please fill out both fields before saving.");
-        }
-    };
+  const handleReplyClick = (chatId, message) => {
+    setReplyData({ show: true, message, chatId });
+  };
 
-    const handleSecSave = () => {
-        if (name && solution) {
-            setIsSaved(true);
-            setTimeout(() => {
-                setIsSaved(false); 
-                setName(""); 
-                setSolution(""); 
-                setIsSecFormVisible(false); 
-            }, 3000);
-        } else {
-            alert("Please fill out both fields before saving.");
-        }
-    };
+  const handleSendReply = () => {
+    // Handle sending reply logic
+    setReplyData({ show: false, message: "", chatId: null });
+  };
 
-    const handlePopupClose = () => {
-        setIsSaved(false); // Hide the popup
-        setIsFormVisible(false); // Hide the form
-        setIsSecFormVisible(false); // Hide the secondary form
-    };
+  const handleSendMessage = () => {
+    // Handle sending new message logic
+    setNewMessage("");
+  };
 
-    const handleViewMore = () => {
-        setSection("ProbsMore"); 
-    };
+  const handleAnonymousToggle = () => {
+    setSendAnonymously(!sendAnonymously);
+  };
 
-    const sliderSettings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 1,
-                },
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                },
-            },
-        ],
-    };
+  const handleViewSensitiveContent = () => {
+    setSensitiveContentVisible(true);
+  };
 
-    const cards = [
-        // { image: <SupportIcon />, title: "Support", content: "Find support from others who understand your journey." },
-        // { image: <ShareIcon />, title: "Share", content: "Share your experiences and help others along the way." },
-        // { image: <HealIcon />, title: "Heal", content: "Take steps towards healing in a caring community." },
-        // { image: <InspireIcon />, title: "Inspire", content: "Inspire others with your story and be inspired in return." },
-        // { image: <ConnectIcon />, title: "Connect", content: "Build meaningful connections that foster well-being." },
-    ];
+  const chats = selectedCategory ? dummyChats[selectedCategory] : [];
 
-    const Probcards = [
-        { image: Person1, name: "John Doe", problem: "I'm feeling anxious about work." },
-        { image: Person2, name: "Jane Smith", problem: "Having trouble managing stress." },
-        { image: Person3, name: "Sam Wilson", problem: "Dealing with loss and grief." },
-        { image: Person4, name: "Emily Davis", problem: "I feel isolated and lonely." },
-        { image: Person5, name: "Michael Brown", problem: "Facing challenges in my relationship." },
-    ];
-
-    const Probcards2 = [
-        { image: Person6, name: "Olivia White", problem: "Struggling with self-confidence and self-worth." },
-        { image: Person7, name: "Liam Johnson", problem: "Experiencing burnout and fatigue at work." },
-        { image: Person8, name: "Sophia Martinez", problem: "Finding it hard to cope with anxiety in social situations." },
-        { image: Person9, name: "Noah Clark", problem: "Battling depression and trying to find motivation." },
-        { image: Person10, name: "Ava Thompson", problem: "Dealing with a recent breakup and feeling overwhelmed." },
-    ];    
-
-    useEffect(() => {
-        setTimeout(() => {
-            setPoemVisible(true);
-        }, 500);
-    }, []);
-
-    useEffect(() => {
-        const storedProblems = localStorage.getItem("submittedProblems");
-        if (storedProblems) {
-            setSubmittedProblems(JSON.parse(storedProblems));
-        }
-    }, []);
-
-    return (
-        <div className="Community">
-            {section === "CommIntro" && (
-                <>
-                    <div className="Commban">
-                        <video autoPlay muted loop className="video-bg">
-                            <source src={CommVideo} type="video/mp4" />
-                        </video>
-
-                        <h2 className="heading animated-text">
-                            <span>Connect, Share </span>
-                            <span>and Heal: </span>
-                            <span>A community for your Mental well-being.</span>
-                        </h2>
-
-                        <button className="join-btn" onClick={() => setSection("CommSecond")}>
-                            Join the Community
-                        </button>
-                    </div>
-                    <section>
-                        <h3 className={`CommunityPoem ${poemVisible ? 'show' : ''}`}>
-                            " दिल के बोझ को हल्का करो, <br />
-                            बातें अपनी कह दो, <br />
-                            यहाँ कोई न तुम्हें ताने देगा, <br />
-                            बस हौसला बढ़ा देगा। <br />
-                            जिन राहों पर तुम अकेले थे चले, <br />
-                            अब साथ मिलकर सब सफ़र करेंगे ढले। "
-                        </h3>
-                    </section>
-                    <section className='card-slider'>
-                        <Slider {...sliderSettings}>
-                            {cards.map((card, index) => (
-                                <div key={index} className="card">
-                                    <div className="card-content">
-                                        <div className="card-image">{card.image}</div>
-                                        <div className="card-text">
-                                            <h3>{card.title}</h3>
-                                            <p>{card.content}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
-                        </Slider>
-                    </section>
-                    <br /><br />
-                </>
-            )}
-
-            {section === "CommSecond" && (
-                <>
-                    <div className="CommbanSecond">
-                        <div className="mental-bg">
-                            {/* <CommunityIcon className="community-svg" /> */}
-                            <h2 className="heal-heading">
-                                <span>Together We Heal: <br /> </span>
-                                <span>Share Your <br /> Journey or Offer a <br />Helping Hand</span>
-                            </h2>
-                        </div>
-                        <div className="submitProb">
-                            <div className="submitProb-content">
-                                {/* <ProbIcon className="submitProb-img" /> */}
-                                <div className="submitProb-text">
-                                    <h2>Share your story, Find support</h2>
-                                    <p>"You're not alone. Open up to those who understand and find comfort in the community."</p>
-                                    <button className="share-btn" onClick={handleOpenForm}>Open Up, Share Your Problem</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        {isFormVisible && (
-                            <div className="problem-form">
-                                <h3>Share Your Problem</h3>
-                                <label>
-                                    <input
-                                        type="text"
-                                        value={name}
-                                        onChange={(e) => setName(e.target.value)}
-                                        placeholder="Enter your name"
-                                    />
-                                </label>
-                                <br />
-                                <label>
-                                    <textarea
-                                        value={problem}
-                                        onChange={(e) => setProblem(e.target.value)}
-                                        placeholder="Describe the Mental health issue you're facing"
-                                    />
-                                </label>
-                                <br />
-                                <button className="save-btn" onClick={handleSave}>Save</button>
-                            </div>
-                        )}
-
-                        {isSecFormVisible && (
-                            <div className="problem-form">
-                                <h3>Offer Your Solution</h3>
-                                <label>
-                                    <input
-                                        type="text"
-                                        value={name}
-                                        onChange={(e) => setName(e.target.value)}
-                                        placeholder="Enter your name"
-                                    />
-                                </label>
-                                <br />
-                                <label>
-                                    <textarea
-                                        value={solution}
-                                        onChange={(e) => setSolution(e.target.value)}
-                                        placeholder={`Suggest solutions for: ${currentProblem}`}
-                                    />
-                                </label>
-                                <br />
-                                <button className="save-btn" onClick={handleSecSave}>Save</button>
-                            </div>
-                        )}
-
-                        {isSaved && (
-                            <div className="popup-message">
-                                <span>Your response is saved!</span>
-                                <button onClick={handlePopupClose} className="popup-close-btn">OK</button>
-                            </div>
-                        )}
-                    </div>
-                    <div className="prob-cards">
-                        {Probcards.slice(0, 5).map((person, index) => (
-                            <div key={index} className="prob-card">
-                                <div className="prob-card-image">
-                                    <img src={person.image} alt={`${person.name}`} />
-                                </div>
-                                <div className="prob-card-content">
-                                    <h3>{person.name}</h3>
-                                    <p>{person.problem}</p>
-                                    <button className="prob-button" onClick={() => handleOpenSecForm(person.problem)}>Help Me</button>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                    <button className="prob-button" onClick={handleViewMore}>View More</button>
-                </>
-            )}
-
-{section === "ProbsMore" && (
+  return (
     <>
-        <h2 className="your-heading">Your Voice, Your Story</h2>
-        <div className="prob-cardsMore">
-            {submittedProblems.map((person, index) => (
-                <div key={index} className="prob-card">
-                    <div className="prob-card-image">
-                        <img src={Person1} alt={`${person.name}`} />
-                    </div>
-                    <div className="prob-card-content">
-                        <h3>{person.name}</h3>
-                        <p>{person.problem}</p>
-                        <button className="prob-button" onClick={() => handleOpenSecForm(person.problem)}>Help Me</button>
-                    </div>
-                </div>
-            ))}
+      <div className="community_body">
+        <div className="navbar-com">
+          <ul>
+            <li className="site-name-com">MindHaven.</li>
+            <li className="search-container-com">
+              <div className="search-bar-com">
+                <input type="text" placeholder="Search..." />
+                <img src={SearchIcon} alt="Search Icon" />
+              </div>
+            </li>
+            <li className="icon-container-com">
+              <img src={BellIcon} alt="Bell Icon" className="icon-com" />
+            </li>
+            <li className="icon-container-com">
+              <img src={SettingIcon} alt="Setting Icon" className="icon-com" />
+            </li>
+            <li className="icon-container-com">
+              <img src={ShareIcon} alt="Share Icon" className="icon-com" />
+            </li>
+            <li className="icon-container-com">
+              <img src={ProfileIcon} alt="Profile Icon" className="icon-com" />
+            </li>
+          </ul>
         </div>
-
-        <h2 className="your-heading">Stories from our Community</h2>
-        <div className="prob-cardsMore">
-            {[...Probcards, ...Probcards2].map((person, index) => (
-                <div key={index} className="prob-card">
-                    <div className="prob-card-image">
-                        <img src={person.image} alt={`${person.name}`} />
-                    </div>
-                    <div className="prob-card-content">
-                        <h3>{person.name}</h3>
-                        <p>{person.problem}</p>
-                        <button className="prob-button" onClick={() => handleOpenSecForm(person.problem)}>Help Me</button>
-                    </div>
+        <div className="community-dashboard">
+          <div className="commcol1">
+            <div className="commGroup-com">
+              <h3>GROUPS</h3>
+            </div>
+            <div className="commCat">
+              {Object.keys(categoryIcons).map((category) => (
+                <div
+                  key={category}
+                  className={`cat1 ${
+                    selectedCategory === category ? "active" : ""
+                  }`}
+                  onClick={() => handleCategoryClick(category)}
+                >
+                  <img
+                    src={categoryIcons[category]}
+                    alt=""
+                    className="CommIcon-com"
+                  />
+                  <h4 className="CommText-com">{category}</h4>
                 </div>
-            ))}
+              ))}
+            </div>
+            <div className="share-community-com">
+              <img src={PlantIcon} alt="Plant Icon" className="planticon-com" />
+              <h5 className="share-heading-com">
+                Share this community <br /> with <br /> someone who needs
+                support
+              </h5>
+              <img
+                src={Share1Icon}
+                alt="Share Icon"
+                className="shareicon-com"
+              />
+            </div>
+          </div>
+          <div className="commcol2">
+            <div className="cat-heading">
+              {selectedCategory && (
+                <>
+                  <img
+                    src={categoryIcons[selectedCategory]}
+                    alt={selectedCategory}
+                    className="CatHeadingIcon"
+                  />
+                  <h2 className="CatHeadingText-com">{selectedCategory}</h2>
+                </>
+              )}
+            </div>
+            <div
+              className={`chat-container-com ${
+                sensitiveContentVisible ? "" : "blurred"
+              }`}
+            >
+              {!sensitiveContentVisible && (
+                <div className="sensitive-content-overlay">
+                  <p>Sensitive Content</p>
+                  <button onClick={handleViewSensitiveContent}>View</button>
+                </div>
+              )}
+              {sensitiveContentVisible && isChatsVisible && (
+                <div className="chat-list">
+                  {chats.map((chat) => (
+                    <div key={chat.id} className="chat-item">
+                      <p>
+                        <strong>{chat.user}:</strong> {chat.message}
+                      </p>
+                      <button
+                        onClick={() => handleReplyClick(chat.id, chat.message)}
+                      >
+                        Reply
+                      </button>
+                      {/* Display replies if any */}
+                      {chat.replies.map((reply) => (
+                        <div key={reply.id} className="chat-reply">
+                          <p>
+                            <strong>{reply.user}:</strong> {reply.message}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+            {replyData.show && (
+              <div className="reply-popup">
+                <p>
+                  <strong>Reply to:</strong> {replyData.message}
+                </p>
+                <textarea placeholder="Type your reply here..."></textarea>
+                <button onClick={handleSendReply}>Send Reply</button>
+              </div>
+            )}
+            <div className="typing-bar">
+              <div className="anonymous-container">
+                <input
+                  type="checkbox"
+                  checked={sendAnonymously}
+                  onChange={handleAnonymousToggle}
+                />
+                <label>Send Anonymously</label>
+              </div>
+              <div className="textarea-container-com">
+                <textarea
+                  value={newMessage}
+                  onChange={(e) => setNewMessage(e.target.value)}
+                  placeholder="Type your message here..."
+                ></textarea>
+                <button onClick={handleSendMessage}>Send</button>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </>
-)}
-
-        </div>
-    );
+  );
 }
 
 export default CommunityPage;
