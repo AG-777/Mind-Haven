@@ -31,7 +31,7 @@ function Dashboard() {
   useEffect(() => {
     console.log("Loaded Dashboard");
   }, []);
-
+ 
   const handleFunctionClick = (newHeading, newSection) => {
     setHeading(newHeading);
     setSection(newSection);
@@ -40,7 +40,8 @@ function Dashboard() {
     navigate("/");
   }
 const handleClick = () => {
-  navigate("/appointment"); // This will navigate to the About component
+  const url = window.location.origin + "/appointment"; // Assuming the route is /appointment
+  window.open(url, "_blank"); // This will navigate to the About component
 };
 const CommunityHandle = () =>{
   navigate("/community");
@@ -65,6 +66,7 @@ const CommunityHandle = () =>{
             <button
               className="func"
               onClick={handleClick}
+              
             >
               <FontAwesomeIcon icon={faClipboard} className="icon" />
               <p>Consult a Therapist</p>

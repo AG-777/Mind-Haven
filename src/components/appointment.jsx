@@ -6,19 +6,25 @@ const MindHaven = () => {
   const home_ap = useRef(null);
   const scrollTo_home_ap = () =>{
     if (home_ap.current) {
-      home_ap.current.scrollIntoView({ behavior: "smooth", block: "start" });
-
-      window.scrollTo({ top: -10, left: 0, behavior: "smooth" });
+      window.scrollTo({
+        top: home_ap.current.offsetTop - 150, // Offset the scroll position by 50px
+        behavior: "smooth", // Smooth scroll
+      });
     }
   }
   const therapist_ap = useRef(null);
-  const scrollTotherapist_ap = () =>{
-    therapist_ap.current.scrollIntoView({ behavior: "smooth" });
-   
-  }
+   const scrollTotherapist_ap = () => {
+     if (therapist_ap.current) {
+       window.scrollTo({
+         top: therapist_ap.current.offsetTop - 100, // Offset the scroll position by 50px
+         behavior: "smooth", // Smooth scroll
+       });
+     }
+   };
+
   return (
     <div className="body-ap">
-      <Navbar customStyles={{ backgroundColor: "rgba(34, 31, 31, 0.104)" }} />
+      <Navbar scroll1={scrollTotherapist_ap} scroll2={scrollTo_home_ap} customStyles={{ backgroundColor: "rgba(34, 31, 31, 0.104)" }} />
       <section className="hero-section" ref={home_ap}>
         <div className="hero-content">
           <div className="text-content-ap">

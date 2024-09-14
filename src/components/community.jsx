@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import "../css/community.css";
-import BellIcon from "../assets/bell.png";
-import SettingIcon from "../assets/setting.png";
-import ShareIcon from "../assets/share.png";
-import ProfileIcon from "../assets/profile.png";
-import SearchIcon from "../assets/search.png";
+// import BellIcon from "../assets/bell.png";
+// import SettingIcon from "../assets/setting.png";
+// import ShareIcon from "../assets/share.png";
+// import ProfileIcon from "../assets/profile.png";
+// import SearchIcon from "../assets/search.png";
 import SupportIcon from "../assets/support.png";
 import DepressionIcon from "../assets/fear.png";
 import AnxietyIcon from "../assets/anxiety.png";
@@ -13,7 +13,7 @@ import CareIcon from "../assets/old.png";
 import InsomniaIcon from "../assets/insomnia.png";
 import Share1Icon from "../assets/share1.png";
 import PlantIcon from "../assets/plant.png";
-import Navbar from "../components/navbar"
+import BackButton from "../components/back_btn";
 const categoryIcons = {
   "Addiction Support": SupportIcon,
   "Living with Depression": DepressionIcon,
@@ -104,7 +104,7 @@ function CommunityPage() {
   return (
     <>
       <div className="community_body">
-        <Navbar/>
+        <BackButton target={"/dashboard"} />
         {/* <div className="navbar-com">
           <ul>
             <li className="site-name-com">MindHaven.</li>
