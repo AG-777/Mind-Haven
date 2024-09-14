@@ -1,0 +1,265 @@
+/* ClinicAndAboutUs.css */
+@font-face {
+  font-family: 'Literata';
+  src: url('fonts/Literata-Regular.woff2') format('woff2'),
+       url('fonts/Literata-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.body-about {
+  margin: 0;
+  font-family: 'Literata', serif;
+  background: linear-gradient(to right, #fff2e8, white, #e2f4ff);
+}
+
+.container-about {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.content-about {
+  display: flex;
+  flex-direction: column;
+  width: 90rem;
+  /* max-width: 1200px; */
+  background-color: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.image-section-about {
+  flex: 1;
+  background-size: cover;
+  height: 300px;
+}
+
+.image-section-about img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.text-section-about {
+  flex: 1;
+  height: 28rem;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.text-section-about h2 {
+  font-family: 'Literata', serif;
+  font-size: 36px;
+  color: #2c2c54;
+  margin: 0;
+}
+
+.text-section-about h2 span {
+  font-weight: bold;
+}
+
+.text-section-about p {
+  font-size: 1.3rem;
+  color: #6c757d;
+  margin-top: 20px;
+}
+
+.text-section-about .about-us-about {
+  font-size: 14px;
+  color: #adb5bd;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+@media (min-width: 768px) {
+  .content-about {
+    flex-direction: row;
+  }
+  .image-section-about {
+    height: auto;
+  }
+}
+
+.about-container-about {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  color: #333;
+}
+
+.about-content-about {
+  padding: 4rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  overflow: hidden;
+}
+
+.about-text-about {
+  padding: 40px;
+  color: #67656E;
+  font-family: 'Literata', serif;
+  flex: 1 1 300px;
+}
+
+.about-text-about h1 {
+  font-size: 48px;
+  color: #2c2c2c;
+  margin-bottom: 20px;
+}
+
+.about-text-about p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #666;
+  margin-right: 11rem;
+}
+
+.about-image-about {
+  flex: 1 1 300px;
+}
+
+.about-image-about img {
+  width: 90%;
+  border-radius: 2rem;
+}
+
+@media (max-width: 768px) {
+  .about-text-about h1 {
+    font-size: 36px;
+  }
+  .about-text-about p {
+    font-size: 16px;
+  }
+  .about-image-about img {
+    border-radius: 0 0 10px 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-text-about {
+    padding: 20px;
+  }
+  .about-text-about h1 {
+    font-size: 28px;
+  }
+  .about-text-about p {
+    font-size: 14px;
+  }
+}
+
+.elementor-heading-title-about {
+  font-size: 4rem;
+  color: #190D39;
+}
+
+.ele2sel-about {
+  font-style: italic;
+  font-weight: 600;
+}
+
+.team-section-about {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  color: #333;
+  font-family: 'Literata', serif;
+}
+
+.team-section-about h2 {
+  font-size: 24px;
+  color: #67656E;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.team-section-about h1 {
+  font-size: 48px;
+  color: #2c2c2c;
+  margin-bottom: 40px;
+}
+
+.team-section-about h1 span {
+  font-weight: 700;
+}
+
+.team-about {
+  margin-top: 3.6rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.team-member-about {
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 300px;
+  text-align: center;
+  transition: transform 0.3s;
+  margin-right: 1.5rem;
+}
+
+.team-member-about:hover {
+  transform: translateY(-10px);
+}
+
+.team-member-about img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.info-about {
+  padding: 20px;
+}
+
+.info-about h3 {
+  font-size: 24px;
+  color: #2c2c54;
+  margin: 10px 0 5px 0;
+}
+
+.info-about p {
+  font-size: 16px;
+  color: #6c757d;
+  margin-bottom: 15px;
+}
+
+.info-about a {
+  font-size: 14px;
+  color: #007bff;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: color 0.3s;
+}
+
+.info-about a:hover {
+  color: #0056b3;
+}
+
+.info-about a i {
+  font-size: 12px;
+}
+
+.team-section-about h2 {
+  text-align: center;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  font-weight: lighter;
+  position: relative;
+  top: -1rem;
+}

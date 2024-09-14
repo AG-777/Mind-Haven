@@ -1,30 +1,28 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../css/navbar.css";
-import BackButton from "./back_btn";
-
-function Navbar({ scroll1, scroll2, customStyles = {} }) {
+function Navbar({ scrollToTeam, customStyles = {} }) {
   return (
     <div className="navbar-main" style={customStyles}>
-      {/* <BackButton target={"/dashboard"} /> */}
       <div className="logo">
         <a href="../" className="anchor-logo">
           MindHaven.
         </a>{" "}
       </div>
       <div className="nav">
-        <button className="navComp navBtn" onClick={scroll2}>
-          Home
+        <button className="navComp navBtn" onClick={scrollToTeam}>
+          Our Team
         </button>
-        {/* <Link to="/about" className="navComp">
-          About
-        </Link> */}
-        <button className="navComp navBtn" onClick={scroll1}>
-          Therapists
-        </button>
-
         <Link to="/contact_us" target="_blank" className="navComp">
           Contact
+        </Link>
+        {/* <Link to="/login">
+          <button className="login-index-btn">Login</button>
+        </Link> */}
+        <Link to="./login">
+          <button className="get-started">
+            <span>Get Started</span>
+          </button>
         </Link>
       </div>
     </div>
