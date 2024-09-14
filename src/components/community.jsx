@@ -13,6 +13,7 @@ import CareIcon from "../assets/old.png";
 import InsomniaIcon from "../assets/insomnia.png";
 import Share1Icon from "../assets/share1.png";
 import PlantIcon from "../assets/plant.png";
+import Navbar from "../components/navbar"
 const categoryIcons = {
   "Addiction Support": SupportIcon,
   "Living with Depression": DepressionIcon,
@@ -103,7 +104,8 @@ function CommunityPage() {
   return (
     <>
       <div className="community_body">
-        <div className="navbar-com">
+        <Navbar/>
+        {/* <div className="navbar-com">
           <ul>
             <li className="site-name-com">MindHaven.</li>
             <li className="search-container-com">
@@ -125,7 +127,7 @@ function CommunityPage() {
               <img src={ProfileIcon} alt="Profile Icon" className="icon-com" />
             </li>
           </ul>
-        </div>
+        </div> */}
         <div className="community-dashboard">
           <div className="commcol1">
             <div className="commGroup-com">
