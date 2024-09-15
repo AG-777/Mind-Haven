@@ -134,14 +134,14 @@ const handleClick = () => {
                 <section className="bookApp">
                   <div className="text-content">
                     <h2>Book an Appointment</h2>
-                    <p>Your journey to healing starts here.</p>
+                    <p>Your journey to healing starts <br /> here.</p>
                   </div>
                   <img src={bookAppointmentImg} alt="Book an Appointment" />
                 </section>
                 <section className="third-section">
                   <div className="text-content">
                     <h2>1 to 1 Talk</h2>
-                    <p>Personalized support for your needs.</p>
+                    <p>Personalized support for your <br /> needs.</p>
                   </div>
                   <img src={oneToOneTalkImg} alt="1 to 1 Talk" />
                 </section>

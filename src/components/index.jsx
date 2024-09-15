@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import ArrowIcon from "../landingpage/arrow.svg";
 import "../css/style.css";
@@ -9,50 +9,77 @@ import Review1 from "../community/pro1.webp";
 import Review2 from "../community/pro2.webp";
 import Review3 from "../community/pro3.webp";
 import FAQIcon from "../landingpage/faq.png";
+import MenuIcon from "../landingpage/menu.png";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
 function LandingPage() {
-  useEffect(() => {
-    // Inject Botpress Webchat script
-    const script1 = document.createElement("script");
-    script1.src = "https://cdn.botpress.cloud/webchat/v2.1/inject.js";
-    script1.async = true;
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [isChatOpen, setIsChatOpen] = useState(false); // State to track chatbot visibility
 
-    const script2 = document.createElement("script");
-    script2.src =
-      "https://mediafiles.botpress.cloud/c1a9c8a4-1b9b-482b-8349-d1566a8d5e88/webchat/v2.1/config.js";
-    script2.async = true;
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen); // Toggle menu state
+  };
 
-    document.body.appendChild(script1);
-    document.body.appendChild(script2);
+  const closeMenu = () => {
+    setMenuOpen(false); // Close the menu when a link is clicked
+  };
 
-    // Clean up scripts when component unmounts
-    return () => {
-      document.body.removeChild(script1);
-      document.body.removeChild(script2);
-    };
-  }, []);
+  const toggleChat = () => {
+    setIsChatOpen(prevIsChatOpen => !prevIsChatOpen); // Toggle chatbot visibility
+  };
+
   const videoRefs = useRef([]);
   const faqRef = useRef(null); // Ref for FAQ section
   const reviewRef = useRef(null);
   const [activeQuestion, setActiveQuestion] = useState(null);
+
   const toggleAnswer = (index) => {
     setActiveQuestion(activeQuestion === index ? null : index);
   };
+
   // Scroll to FAQ section
   const scrollToFAQ = () => {
     faqRef.current.scrollIntoView({ behavior: "smooth" });
   };
+
   const scrollToREV = () => {
     reviewRef.current.scrollIntoView({ behavior: "smooth" });
   };
+
+  useEffect(() => {
+    // Handler to close the chatbot on scroll
+    const handleScroll = () => {
+      if (isChatOpen) {
+        setIsChatOpen(false);
+      }
+    };
+
+    // Attach scroll event listener
+    window.addEventListener("scroll", handleScroll);
+
+    // Clean up the event listener
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [isChatOpen]);
+
   return (
     <div className="landing-page landing">
       <div className="frontpage">
         <div className="navbar">
           <div className="logo">MindHaven.</div>
-          <div className="nav">
-            <Link to="/about" className="navComp">
+
+          {/* Menu icon for opening the mobile menu */}
+          <img
+            src={MenuIcon}
+            alt="menu icon"
+            className="menu-btn"
+            onClick={toggleMenu}
+          />
+
+          {/* Navbar links */}
+          <div className={`nav ${menuOpen ? "active" : ""}`}>
+            <Link to="/about" className="navComp" onClick={closeMenu}>
               About
             </Link>
             <button className="navComp navBtn" onClick={scrollToFAQ}>
@@ -61,30 +88,35 @@ function LandingPage() {
             <button className="navComp navBtn" onClick={scrollToREV}>
               Reviews
             </button>
-            <Link to="/contact" className="navComp">
+            <Link to="/contact" className="navComp" onClick={closeMenu}>
               Contact
             </Link>
-            <Link to="/login">
+            <Link to="/login" onClick={closeMenu}>
               <button className="b">Login</button>
             </Link>
-            <Link to="/login">
+            <Link to="/login" onClick={closeMenu}>
               <button className="a">Get Started</button>
             </Link>
+
+            {/* Close icon for mobile menu */}
+            {menuOpen && (
+              <i
+                id="menu-close"
+                className="fas fa-times"
+                onClick={toggleMenu}
+              ></i>
+            )}
           </div>
         </div>
+
         <div className="front-page">
-          <h3 className={`front-heading`}>You deserve to be Happy</h3>
-          <p className={`front-subheading`}>
+          <h3 className="front-heading">You deserve to be Happy</h3>
+          <p className="front-subheading">
             " You deserve to be happy, and we're here to help you find your way.
             Discover a space dedicated to your well-being, where you can express
             yourself and grow. Join a community that supports your journey to
             mental wellness, because your happiness matters."
           </p>
-          <div className="about-us-btn-container">
-            <Link to="/about">
-              <button className={`about-us-btn`}>About Us</button>
-            </Link>
-          </div>
         </div>
         <img
           height="100px"
@@ -94,22 +126,25 @@ function LandingPage() {
           className="arrow-index"
         />
       </div>
+
+      {/* Video Steps */}
       <div className="healsteps">
         <h3 className="head-heading">
           Your Journey to Mental Wellness: A Simple 3-Step Process
         </h3>
-
         <div className="step1">
-          <video
-            ref={(el) => (videoRefs.current[0] = el)}
-            src={Video1}
-            className="ai-video visible animate-in"
-            loop
-            autoPlay
-            muted
-          ></video>
+          <div className="vid-cnt">
+            <video
+              ref={(el) => (videoRefs.current[0] = el)}
+              src={Video1}
+              className="ai-video"
+              loop
+              autoPlay
+              muted
+            ></video>
+          </div>
           <div className="chat-bubble">
-            <p className="step-heading">Chat with Our AI </p>
+            <h2 className="h2lp">Chat with Our AI</h2>
             <p className="step-subheading">
               We know it can be difficult to take that first step, which is why
               our AI bot is here to listen. When you’re ready, start a
@@ -118,16 +153,18 @@ function LandingPage() {
           </div>
         </div>
         <div className="step2">
-          <video
-            ref={(el) => (videoRefs.current[1] = el)}
-            src={Video2}
-            className="ai-video visible animate-in"
-            loop
-            autoPlay
-            muted
-          ></video>
+          <div className="vid-cnt">
+            <video
+              ref={(el) => (videoRefs.current[1] = el)}
+              src={Video2}
+              className="ai-video"
+              loop
+              autoPlay
+              muted
+            ></video>
+          </div>
           <div className="chat-bubble">
-            <p className="step-heading">Connect with the Community</p>
+            <h2 className="h2lp">Connect with the Community</h2>
             <p className="step-subheading">
               Our community page will connect you with others who have
               experienced similar challenges. Read their stories, gain insights,
@@ -136,16 +173,18 @@ function LandingPage() {
           </div>
         </div>
         <div className="step3">
-          <video
-            ref={(el) => (videoRefs.current[2] = el)}
-            src={Video3}
-            className="ai-video visible animate-in"
-            loop
-            autoPlay
-            muted
-          ></video>
+          <div className="vid-cnt">
+            <video
+              ref={(el) => (videoRefs.current[2] = el)}
+              src={Video3}
+              className="ai-video"
+              loop
+              autoPlay
+              muted
+            ></video>
+          </div>
           <div className="chat-bubble">
-            <p className="step-heading">Seek Professional Therapy</p>
+            <h2 className="h2lp">Seek Professional Therapy</h2>
             <p className="step-subheading">
               When you’re ready, we recommend taking the next step by seeking
               professional therapy. We can help guide you to resources and
@@ -153,8 +192,16 @@ function LandingPage() {
             </p>
           </div>
         </div>
+
+        {/* Button 74 */}
+        <div className="button-container">
+          <button className="button-74" role="button" onClick={toggleChat}>
+            Chat with our AI
+          </button>
+        </div>
       </div>
 
+      {/* Reviews */}
       <div className="reviews" ref={reviewRef}>
         <div className="review-content">
           <h3>We have helped many feel better</h3>
@@ -196,9 +243,10 @@ function LandingPage() {
         </div>
       </div>
 
+      {/* FAQ */}
       <div className="faq" ref={faqRef}>
         <div className="faq-pic">
-          <img src={FAQIcon} alt="" className="faqicon bounce" />
+          <img src={FAQIcon} alt="FAQ icon" className="faqicon" />
         </div>
         <div className="faq-que">
           <div className="question" onClick={() => toggleAnswer(1)}>
@@ -236,35 +284,35 @@ function LandingPage() {
         </div>
       </div>
 
+      {/* Footer */}
       <footer>
         <div className="footer-col">
           <h3>Top Products</h3>
-          <li>Manage Reputation</li>
-          <li>Power Tools</li>
-          <li>Managed Website</li>
-          <li>Marketing Service</li>
+          <li key="1">Manage Reputation</li>
+          <li key="2">Power Tools</li>
+          <li key="3">Managed Website</li>
+          <li key="4">Marketing Service</li>
         </div>
         <div className="footer-col">
           <h3>Experts</h3>
-          <li>Therapist</li>
-          <li>Psychiatrist</li>
-          <li>Counsellors</li>
-          <li>Team</li>
-          <li></li>
+          <li key="1">Therapist</li>
+          <li key="2">Psychiatrist</li>
+          <li key="3">Counsellors</li>
+          <li key="4">Team</li>
         </div>
         <div className="footer-col">
           <h3>Features</h3>
-          <li>Book an Appointment</li>
-          <li>1 to 1 talk</li>
-          <li>Digital Diary</li>
-          <li>Community</li>
+          <li key="1">Book an Appointment</li>
+          <li key="2">1 to 1 talk</li>
+          <li key="3">Digital Diary</li>
+          <li key="4">Community</li>
         </div>
         <div className="footer-col">
           <h3>Resources</h3>
-          <li>Guides</li>
-          <li>Research</li>
-          <li>Experts</li>
-          <li>Therapists</li>
+          <li key="1">Guides</li>
+          <li key="2">Research</li>
+          <li key="3">Experts</li>
+          <li key="4">Therapists</li>
         </div>
 
         <div className="footer-col">
@@ -291,12 +339,30 @@ function LandingPage() {
               <i className="fab fa-instagram"></i>
             </a>
             <a href="https://www.linkedin.com/in/quizopedia-quiz-game-935703296/">
-              {" "}
               <i className="fab fa-linkedin-in"></i>
             </a>
           </div>
         </div>
       </footer>
+
+      {isChatOpen && (
+        <iframe
+          src="https://app.gpt-trainer.com/widget/8604f23ef96040eda432f7bd80d49440"
+          width="650px"
+          height="420px"
+          frameBorder="0"
+          allow="clipboard-read; clipboard-write"
+          style={{
+            position: "fixed",
+            bottom: "280px", // Adjusted to place above the button
+            right: "20px",
+            zIndex: "1000",
+            marginRight: "26rem",
+            borderRadius: "10px",
+            boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)"
+          }}
+        ></iframe>
+      )}
     </div>
   );
 }

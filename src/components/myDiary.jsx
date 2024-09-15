@@ -1,155 +1,41 @@
-import React, { useState, useEffect } from "react";
-import "../css/myDiary.css";
-import Diary4 from "../assets/diary4.jpg";
-import FloatingLabel from "react-bootstrap/FloatingLabel";
-import Form from "react-bootstrap/Form";
-import "bootstrap/dist/css/bootstrap.min.css";
-import LoginIcon from "../assets/login.png";
-import Calendar from "./calendar";
-import HeartLine from "../assets/image.png";
-import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
-import Swal from "sweetalert2";
-import { initializeApp } from "firebase/app";
-import {
-  getAuth,
-  GoogleAuthProvider,
-  signInWithPopup,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-} from "firebase/auth";
-import { useNavigate } from "react-router-dom";
+// src/components/MyDiary.jsx
 
-// Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyBwrQ6CSsrNJWOgP7-IbLRme0xbSjymLbE",
-  authDomain: "mind-haven.firebaseapp.com",
-  projectId: "mind-haven",
-  storageBucket: "mind-haven.appspot.com",
-  messagingSenderId: "137669779444",
-  appId: "1:137669779444:web:c6937ae711ef146524e3a1",
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const googleProvider = new GoogleAuthProvider();
+import React, { useState, useEffect } from 'react';
+import '../css/myDiary.css';
+import Diary4 from '../assets/diary4.jpg';
+import Calendar from './calendar';
+import HeartLine from '../assets/image.png';
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
+import { useAuth0 } from '@auth0/auth0-react';
+import { useNavigate } from 'react-router-dom';
 
 function MyDiary() {
-  const [section, setSection] = useState("diaryIntro");
+  const [section, setSection] = useState('diaryIntro');
   const [images, setImages] = useState([]);
   const [showUploadButton, setShowUploadButton] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
-  const [selectedDate, setSelectedDate] = useState(null); // Store the selected date
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [user, setUser] = useState(null);
+  const [selectedDate, setSelectedDate] = useState(null);
+  const { user, loginWithRedirect, logout, isAuthenticated } = useAuth0();
   const navigate = useNavigate();
-  const handleLoginClick = () => {
-    setSection("diaryIntro1");
-  };
 
-  // Check if the user is already logged in
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setUser(user);
-        navigate("/dashboard"); // Redirect to dashboard if logged in
-      }
-    });
-  }, [navigate]);
-
-  const handleGoogleLogin = async (event) => {
-    event.preventDefault();
-    try {
-      const result = await signInWithPopup(auth, googleProvider);
-      setUser(result.user);
-
-      setTimeout(() => {
-        // Close loading screen
-        Swal.close();
-
-        // Show success message
-        Swal.fire({
-          title: "Logged In",
-          text: "Successfully!",
-          icon: "success",
-          showCancelButton: false,
-          showConfirmButton: false,
-          allowOutsideClick: false,
-        }).then(() => {
-          setSection("diaryIntro1");
-        });
-      }, 1000);
-      setTimeout(() => {
-        Swal.close();
-      }, 1800);
-    } catch (error) {
-      const errorMessage = error.message;
-
-      Swal.fire({
-        title: "Error!",
-        text: errorMessage,
-        icon: "error",
-        confirmButtonText: "OK",
-      });
+    if (isAuthenticated && user) {
+      navigate('/dashboard'); // Redirect to dashboard if logged in
     }
+  }, [isAuthenticated, user, navigate]);
+
+  const handleLoginClick = () => {
+    loginWithRedirect();
   };
 
-  const handleEmailLogin = async (event) => {
-    event.preventDefault();
-    try {
-      Swal.fire({
-        title: "Logging In...",
-        html: "Please wait while we process your request.",
-        allowOutsideClick: false,
-        showCancelButton: false,
-        showConfirmButton: false,
-        onBeforeOpen: () => {
-          Swal.showLoading();
-        },
-      });
-
-      const result = await signInWithEmailAndPassword(auth, email, password);
-      setUser(result.user);
-
-      Swal.close();
-      Swal.fire({
-        title: "Logged In",
-        text: "Successfully!",
-        icon: "success",
-        showCancelButton: false,
-        showConfirmButton: false,
-        allowOutsideClick: false,
-        timer: 1000,
-      }).then(() => {
-        setEmail("");
-        setPassword("");
-        setSection("diaryIntro1");
-      });
-    } catch (error) {
-      Swal.close();
-      Swal.fire({
-        title: "Error!",
-        text: error.message || "An error occurred.",
-        icon: "error",
-        confirmButtonText: "OK",
-      });
-    }
+  const handleLogoutClick = () => {
+    logout({ returnTo: window.location.origin });
   };
-
-   const removeImage = (imageToRemove) => {
-     setImages(images.filter((image) => image !== imageToRemove));
-   };
-
-//    const handleNewEntryClick = () => {
-//      setSection("diaryIntro2");
-//    };
-   
 
   const handleNewEntryClick = () => {
-    setSection("diaryIntro2");
-    setShowUploadButton(true); // Show upload button when creating a new entry
+    setSection('diaryIntro2');
+    setShowUploadButton(true);
   };
 
   const handleImageUpload = (event) => {
@@ -159,16 +45,15 @@ function MyDiary() {
   };
 
   const handleSaveClick = () => {
-    setShowPopup(true); // Show popup when saving
-    // Mark the date in the calendar
-    setSelectedDate(new Date().toISOString().split("T")[0]); // Set current date in YYYY-MM-DD format
+    setShowPopup(true);
+    setSelectedDate(new Date().toISOString().split('T')[0]);
   };
 
   const handleClosePopup = () => setShowPopup(false);
 
   return (
     <div className="diary">
-      {section === "diaryIntro" && (
+      {section === 'diaryIntro' && (
         <>
           <div className="diaryIntro">
             <img src={Diary4} alt="Diary Page 1" className="diary4" />
@@ -178,41 +63,19 @@ function MyDiary() {
             </p>
           </div>
           <div className="diarySec">
-            <img src={LoginIcon} alt="Login Icon" className="loginIcon" />
-            <FloatingLabel
-              controlId="floatingInput"
-              label="Email address"
-              className="mb-3"
-            >
-              <Form.Control
-                type="email"
-                placeholder="name@example.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </FloatingLabel>
-            <FloatingLabel
-              controlId="floatingPassword"
-              label="Password"
-              className="floatingPassword"
-            >
-              <Form.Control
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </FloatingLabel>
-            <button className="loginButton" onClick={handleEmailLogin}>
-              Login with Email
-            </button>
-            <button className="loginButton" onClick={handleGoogleLogin}>
-              Login with Google
-            </button>
+            {isAuthenticated ? (
+              <button className="loginButton" onClick={handleLogoutClick}>
+                Logout
+              </button>
+            ) : (
+              <button className="loginButton" onClick={handleLoginClick}>
+                Login
+              </button>
+            )}
           </div>
         </>
       )}
-      {section === "diaryIntro1" && (
+      {section === 'diaryIntro1' && (
         <>
           <div className="diaryIntro">
             <Calendar selectedDate={selectedDate} />
@@ -236,7 +99,7 @@ function MyDiary() {
           </div>
         </>
       )}
-      {section === "diaryIntro2" && (
+      {section === 'diaryIntro2' && (
         <div className="diaryContent">
           <textarea
             className="diaryTextarea newEntryTextarea"
@@ -248,16 +111,14 @@ function MyDiary() {
                 type="file"
                 accept="image/*"
                 id="uploadPicture"
-                style={{ display: "none" }}
+                style={{ display: 'none' }}
                 multiple
                 onChange={handleImageUpload}
               />
               <div className="buttonContainer">
                 <button
                   className="uploadButton"
-                  onClick={() =>
-                    document.getElementById("uploadPicture").click()
-                  }
+                  onClick={() => document.getElementById('uploadPicture').click()}
                 >
                   Upload Pictures
                 </button>
