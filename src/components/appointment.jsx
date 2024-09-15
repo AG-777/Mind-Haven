@@ -2,6 +2,7 @@ import React,{useRef} from "react";
 import "../css/appointment.css";
 import download_svg from "../assets/download.svg";
 import Navbar from './navbar2';
+import Footer from './footer';
 const MindHaven = () => {
   const home_ap = useRef(null);
   const scrollTo_home_ap = () =>{
@@ -101,6 +102,7 @@ const MindHaven = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 };

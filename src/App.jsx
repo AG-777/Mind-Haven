@@ -10,6 +10,7 @@ import MoodTracker from '../src/components/moodtracker';
 import ContactUs from './components/contact_us';
 import CommunityPage from './components/community';
 import AboutUs from './components/about_us';
+import Footer from './components/footer';
 function App() {
 
   return (
@@ -23,6 +24,7 @@ function App() {
       <Route path="/contact_us" element={<ContactUs />} />
       <Route path="/community" element={<CommunityPage/>}/>
       <Route path="/about_us" element={<AboutUs/>}/>
+      <Route path="/footer" element={<Footer/>} />
     </Routes>
   );
 }

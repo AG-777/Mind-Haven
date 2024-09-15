@@ -480,21 +480,6 @@
     }
 }
 
-footer {
-    padding: 8vw;
-    background-color: #ffedd5;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    margin-top: 4vw;
-    gap: 5px;
-    width: 100%;
-  }
-  
-  footer .footer-col{
-    padding-bottom: 40px;
-  }
 
   .hidden {
     opacity: 0;
@@ -510,114 +495,7 @@ footer {
 .hidden-arrow {
     display: none;
 }
-  
-  footer h3{
-    color: rgb(34, 33, 35);
-    font-weight: 600;
-    padding-bottom: 20px;
-    font-size: 1.25rem;
-  }
-  
-  footer li{
-    list-style: none;
-    color: #363330;
-    padding: 10px 0;
-    font-size: 15px;
-    cursor: pointer;
-    transition: 0.3s ease;
-  }
-  
-  footer li:hover {
-    color: rgb(233, 134, 22);
-  }
-  
-  footer p {
-    color: #4e5358;
-  }
-  
-  footer .subscribe {
-    margin-top: 20px;
-  }
-  
-  footer input {
-    width: 220px;
-    padding: 15px 12px;
-    background: #fdba74;
-    border: none;
-    outline: none;
-    color: #2f2e2e;
-  }
-  
-  footer .subscribe a {
-    text-decoration: none;
-    font-size: 0.9rem;
-    padding: 13px 35px;
-    background-color: #fff;
-    font-weight: 600;
-  }
-  
-  footer .subscribe a.yellow{
-    color: #fff;
-    background: #FDC93B;
-    transition: 0.3s ease;
-    margin-left: 1rem;
-  }
-  
-  footer .subscribe a.yellow:hover {
-    color: rgb(21,21,100);
-    background: #fff;
-  }
-  
-  footer .copyright {
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    flex-wrap: wrap;
-}
-
-footer .copyright p {
-    color: #151515;
-}
-
-footer .copyright .pro-links {
-    margin-top: 0;
-    display: flex;
-    gap: 15px;
-}
-
-footer .copyright .pro-links a {
-    text-decoration: none;
-    color: #101c32;
-    cursor: pointer;
-}
-
-footer .copyright .pro-links a i {
-    font-size: 1.5rem;
-    transition: color 0.3s ease;
-}
-
-footer .copyright .pro-links a i:hover {
-    color: #FDC93B;
-}
-
-
-.hidden-arrow {
-    display: none; /* Hide the arrow */
-}
-
-.hidden {
-    opacity: 0;
-    transition: opacity 0.5s ease;
-}
-
-.hidden-about-btn {
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.5s ease; /* Optional transition for smoothness */
-}
-
+ 
 .button-container {
   margin-top: 5rem;
   margin-bottom: 5rem;

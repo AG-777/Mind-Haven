@@ -220,7 +220,10 @@
   height: 300px;
   object-fit: cover;
 }
-
+.unique-member img{
+  object-fit: cover;
+  object-position: top;
+}
 .info-about {
   padding: 20px;
 }

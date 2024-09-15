@@ -62,12 +62,8 @@ const CommunityHandle = () =>{
               <FontAwesomeIcon icon={faBars} className="icon" />
               <p>About Therapies</p>
             </button>
-          
-            <button
-              className="func"
-              onClick={handleClick}
-              
-            >
+
+            <button className="func" onClick={handleClick}>
               <FontAwesomeIcon icon={faClipboard} className="icon" />
               <p>Consult a Therapist</p>
             </button>
@@ -79,6 +75,11 @@ const CommunityHandle = () =>{
               <FontAwesomeIcon icon={faBook} className="icon" />
               <p>My Diary</p>
             </button>
+
+            <button className="func" onClick={CommunityHandle}>
+              <FontAwesomeIcon icon={faUser} className="icon" />
+              <p>Community</p>
+            </button>
             <button
               className="func"
               onClick={() => handleFunctionClick("Mood Tracker", "moodTracker")}
@@ -86,20 +87,13 @@ const CommunityHandle = () =>{
               <FontAwesomeIcon icon={faChartSimple} className="icon" />
               <p>Mood Tracker</p>
             </button>
-            <button
-              className="func"
-              onClick={CommunityHandle}
-            >
-              <FontAwesomeIcon icon={faUser} className="icon" />
-              <p>Community</p>
-            </button>
-            <button
+            {/* <button
               className="func"
               onClick={() => handleFunctionClick("Chat With Us", "chatWithUs")}
             >
               <FontAwesomeIcon icon={faComments} className="icon" />
               <p>Chat With Us</p>
-            </button>
+            </button> */}
           </div>
         </div>
       )}
@@ -121,9 +115,7 @@ const CommunityHandle = () =>{
         <div className="heading">
           <p className="col2-head">{heading}</p>
           {section !== "bookAnAppointment" && (
-            <p className="col2-subtitle">
-              Hi, Welcome to MindHaven {heading}
-            </p>
+            <p className="col2-subtitle">Hi, Welcome to MindHaven {heading}</p>
           )}
 
           {section === "about-therapy" && (

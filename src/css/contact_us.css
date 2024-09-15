@@ -50,8 +50,12 @@
   line-height: 22px;
   color: #5838fc;
   margin-left: 10px; /* Reduced margin for better alignment */
+  
 }
-
+.getin-details .contact-content .get{
+  position: relative;
+  top:-17px;
+}
 
 /* Adjusting layout for phone numbers and emails */
 .contact-phone-number,.contact-emails{
@@ -78,6 +82,8 @@
 
 #contact .getin .getin-details .pro-links{
   margin-left: 28px;
+  display:flex;
+  gap:15px;
 }
 
 

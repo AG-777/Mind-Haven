@@ -1,7 +1,7 @@
 import React from "react";
 import "../css/contact_us.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-
+import Footer from './footer';
 function Contact() {
   return (
     <>
@@ -73,16 +73,16 @@ function Contact() {
             <h3>Social</h3>
             <div className="pro-links">
               <a href="https://www.facebook.com/mindhaven">
-                <i className="fab fa-facebook"></i>
+                <i className="fab fa-facebook fa-2x"></i>
               </a>
               <a href="https://www.instagram.com/mindhaven">
-                <i className="fab fa-instagram"></i>
+                <i className="fab fa-instagram fa-2x"></i>
               </a>
               <a href="https://www.linkedin.com/company/mindhaven">
-                <i className="fab fa-linkedin-in"></i>
+                <i className="fab fa-linkedin-in fa-2x"></i>
               </a>
               <a href="https://wa.me/11234567890">
-                <i className="fab fa-whatsapp"></i>
+                <i className="fab fa-whatsapp  fa-2x"></i>
               </a>
             </div>
           </div>
@@ -145,6 +145,7 @@ function Contact() {
           referrerPolicy="no-referrer-when-downgrade"
         ></iframe>
       </section>
+      <Footer/>
     </>
   );
 }

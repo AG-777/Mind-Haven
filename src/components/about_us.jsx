@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import "../css/about_us.css";
 import Navbar from "./navbar_about";
 import BackButton from "./back_btn";
+import Footer from './footer';
 const AboutUs = () => {
   const our_team = useRef(null);
   const scrollToTeam = ()=>{
@@ -104,8 +105,8 @@ const AboutUs = () => {
                 <h3>Arnav Anand</h3>
               </div>
             </div>
-            <div className="team-member-about">
-              <img
+            <div className="team-member-about unique-member">
+              <img 
                 src="../src/assets/harshit aggarwal.jpg"
                 alt="Portrait of Anne Middleton"
               />
@@ -133,6 +134,7 @@ const AboutUs = () => {
             </div>
           </div>
         </div>
+        <Footer/>
       </div>
     </>
   );
