@@ -10,16 +10,16 @@ function Navbar({ scrollToFAQ, scrollToREV , customStyles = {} }) {
         </a>{" "}
       </div>
       <div className="nav">
-        <Link to="/about_us" className="navComp">
+        <Link to="/about_us" className="navComp-1">
           About
         </Link>
-        <button className="navComp navBtn" onClick={scrollToFAQ}>
+        <button className="navComp-1 navBtn" onClick={scrollToFAQ}>
           FAQ
         </button>
-        <button className="navComp navBtn" onClick={scrollToREV}>
+        <button className="navComp-1 navBtn" onClick={scrollToREV}>
           Reviews
         </button>
-        <Link to="/contact_us" target="_blank" className="navComp">
+        <Link to="/contact_us" target="_blank" className="navComp-1">
           Contact
         </Link>
         {/* <Link to="/login">

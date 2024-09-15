@@ -4,7 +4,7 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 20px 40px;
+  padding: 12px 40px;
   font-size: 1.2rem;
   background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent background */
   color: black;
@@ -13,10 +13,12 @@
 }
 
 .logo {
-  font-size: 2.0rem;
+  color: #22c55e;
+  font-weight: bold;
   margin-left: 2rem;
 }
 .anchor-logo{
+  font-size: 2.4rem;
   text-decoration: none;
   color:#22c55e;
   cursor: pointer;
@@ -26,14 +28,14 @@
   align-items: center;
 }
 
-.navComp {
+.navComp-1 {
   text-decoration: none;
   color: black;
   font-weight: 500;
   letter-spacing: 0.1rem;
   margin-right: 1.2rem;
   cursor: pointer;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 
 .navComp:hover {

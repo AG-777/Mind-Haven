@@ -10,10 +10,10 @@ function Navbar({ scrollToTeam, customStyles = {} }) {
         </a>{" "}
       </div>
       <div className="nav">
-        <button className="navComp navBtn" onClick={scrollToTeam}>
+        <button className="navComp-1 navBtn" onClick={scrollToTeam}>
           Our Team
         </button>
-        <Link to="/contact_us" target="_blank" className="navComp">
+        <Link to="/contact_us" target="_blank" className="navComp-1">
           Contact
         </Link>
         {/* <Link to="/login">

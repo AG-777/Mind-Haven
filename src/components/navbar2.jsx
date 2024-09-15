@@ -13,17 +13,17 @@ function Navbar({ scroll1, scroll2, customStyles = {} }) {
         </a>{" "}
       </div>
       <div className="nav">
-        <button className="navComp navBtn" onClick={scroll2}>
+        <button className="navComp-1 navBtn" onClick={scroll2}>
           Home
         </button>
         {/* <Link to="/about" className="navComp">
           About
         </Link> */}
-        <button className="navComp navBtn" onClick={scroll1}>
+        <button className="navComp-1 navBtn" onClick={scroll1}>
           Therapists
         </button>
 
-        <Link to="/contact_us" target="_blank" className="navComp">
+        <Link to="/contact_us" target="_blank" className="navComp-1">
           Contact
         </Link>
       </div>

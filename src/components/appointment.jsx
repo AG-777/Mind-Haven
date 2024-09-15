@@ -1,8 +1,57 @@
 import React,{useRef} from "react";
 import "../css/appointment.css";
-import download_svg from "../assets/download.svg";
+import svg1 from "../assets/trauma.png";
+import svg2 from "../assets/no-smoke.png";
+import svg3 from "../assets/couple-counseling.png";
+import svg4 from "../assets/psychiatry.png";
+import svg5 from "../assets/mental-health.png";
 import Navbar from './navbar2';
 import Footer from './footer';
+import imgg1 from "../assets/img1.jpg";
+import imgg2 from '../assets/img2.png';
+import imgg3 from '../assets/img3.png';
+import imgg4 from '../assets/img4.png';
+const featuredItems = [
+  { image: svg1, alt: "Therapist Icon 1", category: "Cognitive Behavioral Therapist" },
+  { image: svg2, alt: "Therapist Icon 2", category: "Addiction Therapist" },
+  { image: svg3, alt: "Therapist Icon 3", category: "Couple Therapist" },
+  { image: svg4, alt: "Therapist Icon 4", category: "Psychiatrist" }, 
+  { image: svg5, alt: "Therapist Icon 5", category: "Clinical Psychologist" },
+];
+const therapistsData = [
+  {
+    image: imgg1,
+    name: 'Samiksha Khanna',
+    experience: '2+ years',
+    expertise: 'Personality disorders',
+    languages: 'English, Hindi',
+    sessionMode: 'Virtual, In-Person (Delhi)',
+  },
+  {
+    image: imgg2,
+    name: 'Ravi Sharma',
+    experience: '5 years',
+    expertise: 'Anxiety, Depression',
+    languages: 'English, Tamil',
+    sessionMode: 'Virtual, In-Person (Chennai)',
+  },
+  {
+    image: imgg3,
+    name: 'Aisha Khan',
+    experience: '3 years',
+    expertise: 'Couples Therapy',
+    languages: 'English, Urdu',
+    sessionMode: 'Virtual, In-Person (Mumbai)',
+  },
+  {
+    image: imgg4,
+    name: 'Rohit Patel',
+    experience: '7 years',
+    expertise: 'Stress Management',
+    languages: 'Hindi, Gujarati',
+    sessionMode: 'Virtual, In-Person (Ahmedabad)',
+  }
+];
 const MindHaven = () => {
   const home_ap = useRef(null);
   const scrollTo_home_ap = () =>{
@@ -25,7 +74,11 @@ const MindHaven = () => {
 
   return (
     <div className="body-ap">
-      <Navbar scroll1={scrollTotherapist_ap} scroll2={scrollTo_home_ap} customStyles={{ backgroundColor: "rgba(34, 31, 31, 0.104)" }} />
+      <Navbar
+        scroll1={scrollTotherapist_ap}
+        scroll2={scrollTo_home_ap}
+        customStyles={{ backgroundColor: "rgba(34, 31, 31, 0.104)" }}
+      />
       <section className="hero-section" ref={home_ap}>
         <div className="hero-content">
           <div className="text-content-ap">
@@ -48,14 +101,10 @@ const MindHaven = () => {
         </div>
 
         <div className="featured-images">
-          {[...Array(6)].map((_, i) => (
+          {featuredItems.map((item, i) => (
             <div key={i}>
-              <img
-                src={download_svg}
-                alt="Therapist Icon"
-                className="featured-icon"
-              />
-              <p className="therapist-category">General Therapist</p>
+              <img src={item.image} alt={item.alt} className="featured-icon" />
+              <p className="therapist-category">{item.category}</p>
             </div>
           ))}
         </div>
@@ -71,21 +120,25 @@ const MindHaven = () => {
         </div>
 
         <div className="therapists-list" ref={therapist_ap}>
-          {[...Array(8)].map((_, i) => (
+          {therapistsData.map((therapist, i) => (
             <div className="therapist-card" key={i}>
-              <div className="therapist-image"></div>
+              <div className="therapist-image">
+                <img src={therapist.image} alt={therapist.name} />
+              </div>
               <div className="therapist-details">
-                <p className="therapist-name">Samiksha Khanna</p>
+                <p className="therapist-name">{therapist.name}</p>
                 <p className="therapist-info">
-                  <span className="highlight">2+</span> years of experience
+                  <span className="highlight">{therapist.experience}</span>{" "}
+                  years of experience
                   <br />
                   Expertise:{" "}
-                  <span className="highlight">Personality disorders</span>
+                  <span className="highlight">{therapist.expertise}</span>
                   <br />
-                  Speaks: <span className="highlight">English, Hindi</span>
+                  Speaks:{" "}
+                  <span className="highlight">{therapist.languages}</span>
                   <br />
                   Session Mode:{" "}
-                  <span className="highlight">Virtual, In-Person (Delhi)</span>
+                  <span className="highlight">{therapist.sessionMode}</span>
                 </p>
                 <button className="btn-book">Book</button>
               </div>
@@ -102,7 +155,7 @@ const MindHaven = () => {
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 };

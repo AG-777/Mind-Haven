@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import "../css/dropdown.css";
-import messageIcon from "../assets/message.svg";
-import notificationIcon from "../assets/notification.svg";
-import profileImg from "../assets/natalia.jpg";
-import melissaImg from "../assets/melissa.jpg";
+
+import profileImg from "../assets/img1.jpg";
+import melissaImg from "../assets/img3.png";
 
 const DropdownMenu = () => {
   const [dropdownVisible, setDropdownVisible] = useState(false);

@@ -16,10 +16,11 @@ const AboutUs = () => {
   return (
     <>
       <div className="body-about">
-        <Navbar scrollToTeam={scrollToTeam}
+        <Navbar
+          scrollToTeam={scrollToTeam}
           customStyles={{ backgroundColor: "rgba(127, 108, 108, 0.1)" }}
         />
-      
+
         <BackButton />
         <div className="container-about">
           <div className="content-about">
@@ -91,9 +92,9 @@ const AboutUs = () => {
         </div>
 
         <div className="team-section-about" ref={our_team}>
-          <h2>MEET OUR TEAM</h2>
+    
           <div className="elementor-heading-title-about">
-            Our <strong className="ele2sel-about">Professional Team</strong>
+            MEET <strong className="ele2sel-about">OUR TEAM</strong>
           </div>
           <div className="team-about">
             <div className="team-member-about">
@@ -106,7 +107,7 @@ const AboutUs = () => {
               </div>
             </div>
             <div className="team-member-about unique-member">
-              <img 
+              <img
                 src="../src/assets/harshit aggarwal.jpg"
                 alt="Portrait of Anne Middleton"
               />
@@ -134,7 +135,7 @@ const AboutUs = () => {
             </div>
           </div>
         </div>
-        <Footer/>
+        <Footer />
       </div>
     </>
   );
